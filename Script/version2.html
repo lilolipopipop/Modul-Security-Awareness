@@ -1,0 +1,1326 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PhishAware - Edukasi Keamanan Siber Mandiri</title>
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: {
+                        cyber: {
+                            darkBg: '#0f172a',
+                            darkCard: '#1e293b',
+                            card: '#1e293b',
+                            lightBg: '#f8fafc',
+                            lightCard: '#ffffff',
+                            primary: '#0054A6',
+                            warning: '#f59e0b',
+                            danger: '#ef4444',
+                            accent: '#3A6EA5'
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght=300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            transition: background-color 0.3s, color 0.3s;
+        }
+        /* Custom scrollbar */
+        ::-webkit-scrollbar {
+            width: 6px;
+        }
+        ::-webkit-scrollbar-track {
+            background: transparent;
+        }
+        .dark ::-webkit-scrollbar-thumb {
+            background: #1e293b;
+            border-radius: 4px;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #cbd5e1;
+            border-radius: 4px;
+        }
+        /* Guided tooltips with perfect centering arrows */
+        .tooltip-arrow-down::after {
+            content: "";
+            position: absolute;
+            top: 100%;
+            left: 50%;
+            transform: translateX(-50%);
+            border-width: 8px;
+            border-style: solid;
+            border-color: #0f172a transparent transparent transparent;
+        }
+        .tooltip-arrow-up::after {
+            content: "";
+            position: absolute;
+            bottom: 100%;
+            left: 50%;
+            transform: translateX(-50%);
+            border-width: 8px;
+            border-style: solid;
+            border-color: transparent transparent #0f172a transparent;
+        }
+    </style>
+</head>
+<body class="bg-[#f8fafc] text-slate-800 dark:bg-[#0f172a] dark:text-slate-100 min-h-screen flex flex-col transition-colors duration-300">
+
+    <!-- HEADER & PROGRESS BAR -->
+    <header class="bg-white dark:bg-[#1e293b] border-b border-slate-200 dark:border-slate-800 sticky top-0 z-50 transition-colors duration-300">
+        <div class="max-w-4xl mx-auto px-4 py-3 flex items-center justify-between">
+            <!-- Logo -->
+            <div class="flex items-center gap-2">
+                <div class="bg-gradient-to-tr from-[#0054A6] to-[#3A6EA5] p-1.5 rounded-lg text-white shadow-sm">
+                    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"></path>
+                    </svg>
+                </div>
+                <div>
+                    <span class="font-extrabold text-base tracking-tight bg-gradient-to-r from-[#0054A6] to-[#3A6EA5] bg-clip-text text-transparent">SecAwareness</span>
+                    <span class="text-[9px] block text-slate-400 font-bold tracking-wider uppercase font-mono">Modul Edukasi Security Awareness</span>
+                </div>
+            </div>
+
+            <!-- Progress Indicator -->
+            <div class="flex items-center gap-4">
+                <span class="text-xs font-bold text-slate-500 dark:text-slate-400" id="slide-number">
+                    Slide 1 dari 8
+                </span>
+                
+                <!-- Theme Toggle -->
+                <button onclick="toggleTheme()" class="p-2 rounded-lg text-slate-500 dark:text-slate-400 hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors" title="Ubah Tema">
+                    <svg id="theme-icon-sun" class="w-4 h-4 hidden" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364-6.364l-.707.707M6.343 17.657l-.707.707m12.728 0l-.707-.707M6.343 6.364l-.707-.707M12 8a4 4 0 100 8 4 4 0 000-8z"></path>
+                    </svg>
+                    <svg id="theme-icon-moon" class="w-4 h-4 hidden" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"></path>
+                    </svg>
+                </button>
+            </div>
+        </div>
+        
+        <!-- Interactive Progress Line -->
+        <div class="w-full bg-slate-200 dark:bg-slate-800 h-1.5">
+            <div id="progress-line" class="bg-gradient-to-r from-[#0054A6] to-[#3A6EA5] h-1.5 w-1/8 transition-all duration-300"></div>
+        </div>
+    </header>
+
+    <!-- MAIN IMMERSIVE CONTENT -->
+    <main class="flex-grow max-w-4xl w-full mx-auto px-4 py-6 flex flex-col justify-between">
+
+        <!-- SLIDERS WRAPPER -->
+        <div class="flex-grow flex flex-col justify-center">
+
+            <!-- SLIDE 1: BERANDA -->
+            <div id="slide-home" class="slide-content space-y-6">
+                <div class="space-y-3">
+                    <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-[10px] font-bold bg-blue-500/10 text-blue-600 dark:text-blue-400 border border-blue-500/20 uppercase tracking-wider">
+                        1. Pengantar Keamanan Informasi
+                    </span>
+                    <h1 class="text-3xl md:text-5xl font-extrabold tracking-tight text-slate-900 dark:text-white leading-tight">
+                        Mengapa <span class="bg-gradient-to-r from-[#0054A6] to-[#3A6EA5] bg-clip-text text-transparent">Security Awareness</span> Penting Bagi Kita?
+                    </h1>
+                </div>
+
+                <div class="bg-white dark:bg-slate-800 p-5 rounded-2xl border border-slate-200 dark:border-slate-800 shadow-sm space-y-4">
+                    <p class="text-slate-600 dark:text-slate-300 text-sm leading-relaxed">
+                        Di era digital, pertahanan siber tidak hanya bergantung pada teknologi, tetapi juga pada <strong>kewaspadaan setiap pengguna</strong>. Itulah sebabnya penjahat siber lebih sering memanfaatkan kelengahan manusia melalui rekayasa sosial dibanding mencoba membobol sistem secara langsung.
+                    </p>
+
+                    <!-- Core Facts -->
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-3 pt-2">
+                        <div class="flex gap-3 items-start bg-slate-50 dark:bg-slate-900 p-3 rounded-xl">
+                            <span class="text-xl">🔥</span>
+                            <div>
+                                <h4 class="font-bold text-xs text-slate-800 dark:text-slate-200">90% Kebocoran Data</h4>
+                                <p class="text-[11px] text-slate-500 dark:text-slate-400">Diawali oleh kelalaian manusia mengklik tautan tidak dikenal.</p>
+                            </div>
+                        </div>
+                        <div class="flex gap-3 items-start bg-slate-50 dark:bg-slate-900 p-3 rounded-xl">
+                            <span class="text-xl">🛡️</span>
+                            <div>
+                                <h4 class="font-bold text-xs text-slate-800 dark:text-slate-200">Human Firewall</h4>
+                                <p class="text-[11px] text-slate-500 dark:text-slate-400">Anda adalah pelindung instan untuk data pribadi dan aset kantor.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Easy Unlock Action -->
+                <div class="bg-blue-50 dark:bg-blue-950/20 p-4 rounded-xl border border-blue-500/20 flex flex-col sm:flex-row items-center justify-between gap-3">
+                    <div class="text-xs text-blue-800 dark:text-blue-400 text-center sm:text-left">
+                        <strong>Tugas Cepat:</strong> Klik tombol konfirmasi untuk membuka kuis pertama secara instan.
+                    </div>
+                    <button onclick="startLearning()" class="w-full sm:w-auto px-5 py-2.5 bg-gradient-to-r from-[#0054A6] to-[#3A6EA5] hover:from-[#00498F] hover:to-[#2F5F96] text-white font-bold text-xs rounded-lg shadow-md transition-all">
+                        Saya Siap, Mulai Belajar ⚡
+                    </button>
+                </div>
+            </div>
+
+            <!-- SLIDE 2: GOOGLE JIGSAW QUIZ - KASUS 1 (Email Teams) -->
+            <div id="slide-jenis" class="slide-content hidden space-y-6">
+                <!-- Jigsaw Header UI -->
+                <div class="text-center max-w-2xl mx-auto space-y-2">
+                    <h2 class="text-2xl font-extrabold text-slate-900 dark:text-white" id="jigsaw-title-1">Mari mulai dengan email berbagi berkas ini.</h2>
+                    <p class="text-xs text-slate-500 dark:text-slate-400">
+                        Coba periksa alamat email pengirim dan tautan dengan melayangkan kursor (hover) atau menekan lama. Apakah ini email Phishing atau Legitimate?
+                    </p>
+                    
+                    <!-- Choice Buttons -->
+                    <div id="choice-container-1" class="flex justify-center gap-3 pt-2">
+                        <button onclick="answerJigsaw(1, 'phishing')" class="px-6 py-2 bg-gradient-to-r from-[#0054A6] to-[#3A6EA5] text-white rounded-lg font-bold text-xs hover:opacity-90 shadow">Phishing</button>
+                        <button onclick="answerJigsaw(1, 'legitimate')" class="px-6 py-2 bg-gradient-to-r from-[#0054A6] to-[#3A6EA5] text-white rounded-lg font-bold text-xs hover:opacity-90 shadow">Legitimate</button>
+                    </div>
+
+                    <!-- Feedback Banner -->
+                    <div id="feedback-banner-1" class="hidden p-3 rounded-xl space-y-1 transition-all">
+                        <h3 id="feedback-title-1" class="font-extrabold text-base"></h3>
+                        <p id="feedback-text-1" class="text-xs text-slate-600 dark:text-slate-300 max-w-lg mx-auto"></p>
+                        <button id="show-me-btn-1" onclick="startExplanation(1)" class="mt-2 px-4 py-1.5 bg-blue-600 hover:bg-blue-700 text-white font-bold text-xs rounded shadow">Tunjukkan Detail 🔍</button>
+                    </div>
+                </div>
+
+                <!-- Jigsaw Email Client Container -->
+                <div class="relative bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-xl shadow-sm max-w-2xl mx-auto">
+                    <!-- Email Header Area -->
+                    <div class="p-4 border-b border-slate-100 dark:border-slate-800 space-y-1 text-xs">
+                        <div class="flex items-center justify-between">
+                            <div class="flex items-center gap-2">
+                                <div class="w-8 h-8 rounded-full bg-blue-600 text-white flex items-center justify-center font-bold">L</div>
+                                <div>
+                                    <h4 class="font-bold text-slate-900 dark:text-white">Lukman Wijaya</h4>
+                                    <p class="text-[10px] text-slate-400">to me</p>
+                                </div>
+                            </div>
+                            <span class="text-[10px] text-slate-400">10:22 AM</span>
+                        </div>
+                        <div class="pt-2 text-slate-500 dark:text-slate-400">
+                            <strong>Pengirim:</strong> 
+                            
+                            <!-- Nested Relative Target 1-1 -->
+                            <div class="relative inline-block z-30">
+                                <span id="target-sender-1" class="font-mono bg-slate-50 dark:bg-slate-950 px-1.5 py-0.5 rounded cursor-pointer relative border border-transparent">
+                                    &lt;no-reply.teams@datascrip.id&gt;
+                                </span>
+                                
+                                <!-- Aligned Tooltip 1-1 -->
+                                <div id="flag-tooltip-1-1" class="absolute hidden bottom-full left-1/2 -translate-x-1/2 mb-2 w-72 bg-slate-900 text-white p-3 rounded-lg shadow-xl text-xs border border-slate-800 tooltip-arrow-down text-left z-45">
+                                    <p class="font-bold text-yellow-400 mb-1">🚨 Domain Pengirim Palsu!</p>
+                                    <p class="leading-relaxed text-[11px] mb-2 text-slate-300">
+                                        Alamat pengirim menggunakan domain <code class="bg-slate-800 px-1 py-0.5 rounded text-red-400 font-mono">datascrip.id</code> yang ditambahkan di akhir, bukan domain resmi perusahaan Anda (<code class="bg-slate-800 px-1 py-0.5 rounded text-emerald-400 font-mono">datascrip.co.id</code>).
+                                    </p>
+                                    <div class="flex justify-between items-center pt-1 border-t border-slate-800">
+                                        <span class="text-[10px] text-slate-400">Langkah 1 dari 2</span>
+                                        <button onclick="nextTooltip(1, 1)" class="px-2 py-1 bg-blue-600 rounded text-[10px] font-bold hover:bg-blue-750">Berikutnya →</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Email Body Area -->
+                    <div class="p-6 space-y-4 text-xs md:text-sm text-slate-850 dark:text-slate-100 relative">
+                        <div class="border border-slate-200 dark:border-slate-800 rounded-xl p-4 space-y-3 bg-slate-50/50 dark:bg-slate-950/20">
+                            <div class="flex items-center gap-2">
+                                <span class="text-xl">📄</span>
+                                <h3 class="font-bold text-slate-900 dark:text-white">New file has been shared with you.</h3>
+                            </div>
+                            <p class="text-xs text-slate-500">
+                                Mengundang Anda untuk meninjau dan menandatangani dokumen anggaran Q2 Departemen:
+                            </p>
+                            
+                            <!-- Fake Document preview -->
+                            <div class="bg-white dark:bg-slate-950 border border-slate-200 dark:border-slate-800 p-3 rounded-lg flex items-center justify-between">
+                                <div class="flex items-center gap-2">
+                                    <span class="text-2xl">📊</span>
+                                    <div>
+                                        <p class="text-xs font-bold">Anggaran_Departemen_Q2.xlsx</p>
+                                        <p class="text-[9px] text-slate-400">Microsoft Excel Spreadsheet</p>
+                                    </div>
+                                </div>
+                                
+                                <!-- Nested Relative Target 1-2 -->
+                                <div class="relative inline-block z-30">
+                                    <button id="target-link-1" 
+                                            onmouseenter="showStatusBar(1, 'http://login-microsoft365.id-secure.com/auth-login')" 
+                                            onmouseleave="hideStatusBar(1)" 
+                                            class="px-4 py-1.5 bg-[#0054A6] text-white font-bold text-xs rounded hover:bg-opacity-95 transition-all">
+                                        Buka Dokumen
+                                    </button>
+                                    
+                                    <!-- Aligned Tooltip 1-2 -->
+                                    <div id="flag-tooltip-1-2" class="absolute hidden bottom-full left-1/2 -translate-x-1/2 mb-2 w-72 bg-slate-900 text-white p-3 rounded-lg shadow-xl text-xs border border-slate-800 tooltip-arrow-down text-left z-45">
+                                        <p class="font-bold text-yellow-400 mb-1">🚨 Alamat Tautan Palsu!</p>
+                                        <p class="leading-relaxed text-[11px] mb-2 text-slate-300">
+                                            Ketika kursor diletakkan di atas tombol, tautan mengarah ke <code class="bg-slate-800 px-1 py-0.5 rounded text-red-400 font-mono">id-secure.com</code> (lihat browser status bar di pojok kiri bawah). Ini adalah halaman tiruan untuk memanen kredensial kata sandi Anda.
+                                        </p>
+                                        <div class="flex justify-between items-center pt-1 border-t border-slate-800">
+                                            <span class="text-[10px] text-slate-400">Langkah 2 dari 2</span>
+                                            <button onclick="finishExplanation(1)" class="px-2 py-1 bg-emerald-600 rounded text-[10px] font-bold hover:bg-emerald-700">Selesai Membaca ✓</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Browser Status Bar Simulation -->
+                    <div id="status-bar-1" class="absolute bottom-0 left-0 bg-slate-100 dark:bg-slate-800 border-tr border-slate-200 dark:border-slate-700 text-[10px] font-mono text-slate-600 dark:text-slate-300 px-2 py-1 rounded-tr-lg opacity-0 transition-opacity duration-200 pointer-events-none z-10">
+                        http://login-microsoft365.id-secure.com/auth-login
+                    </div>
+                </div>
+            </div>
+
+            <!-- SLIDE 3: GOOGLE JIGSAW QUIZ - KASUS 2 (SMS OTP) -->
+            <div id="slide-simulator" class="slide-content hidden space-y-6">
+                <!-- Jigsaw Header UI -->
+                <div class="text-center max-w-2xl mx-auto space-y-2">
+                    <h2 class="text-2xl font-extrabold text-slate-900 dark:text-white" id="jigsaw-title-2">Bagaimana dengan pesan penawaran berhadiah ini?</h2>
+                    <p class="text-xs text-slate-500 dark:text-slate-400">
+                        Bacalah SMS yang masuk berikut ini dengan seksama. Apakah ini penipuan Phishing (Smishing) atau penawaran resmi dari Bank?
+                    </p>
+                    
+                    <!-- Choice Buttons -->
+                    <div id="choice-container-2" class="flex justify-center gap-3 pt-2">
+                        <button onclick="answerJigsaw(2, 'phishing')" class="px-6 py-2 bg-gradient-to-r from-[#0054A6] to-[#3A6EA5] text-white rounded-lg font-bold text-xs hover:opacity-90 shadow">Phishing</button>
+                        <button onclick="answerJigsaw(2, 'legitimate')" class="px-6 py-2 bg-gradient-to-r from-[#0054A6] to-[#3A6EA5] text-white rounded-lg font-bold text-xs hover:opacity-90 shadow">Legitimate</button>
+                    </div>
+
+                    <!-- Feedback Banner -->
+                    <div id="feedback-banner-2" class="hidden p-3 rounded-xl space-y-1 transition-all">
+                        <h3 id="feedback-title-2" class="font-extrabold text-base"></h3>
+                        <p id="feedback-text-2" class="text-xs text-slate-600 dark:text-slate-300 max-w-lg mx-auto"></p>
+                        <button id="show-me-btn-2" onclick="startExplanation(2)" class="mt-2 px-4 py-1.5 bg-blue-600 hover:bg-blue-700 text-white font-bold text-xs rounded shadow">Tunjukkan Detail 🔍</button>
+                    </div>
+                </div>
+
+                <!-- Jigsaw SMS Container (Phone Mockup) -->
+                <div class="relative bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-xl shadow-sm max-w-sm mx-auto p-4">
+                    <!-- SMS Header Area -->
+                    <div class="border-b border-slate-100 dark:border-slate-800 pb-2 mb-3 text-center">
+                        <span class="text-[10px] text-slate-400 font-mono block">PESAN MASUK</span>
+                        
+                        <!-- Nested Relative Target 2-1 -->
+                        <div class="relative inline-block z-30 mt-1">
+                            <span id="target-sender-2" class="text-xs font-bold text-red-500 bg-red-500/5 px-2 py-0.5 rounded cursor-pointer font-mono inline-block">
+                                INFO_BRI 
+                            </span>
+                            
+                            <!-- Aligned Tooltip 2-1 -->
+                            <div id="flag-tooltip-2-1" class="absolute hidden bottom-full left-1/2 -translate-x-1/2 mb-2 w-72 bg-slate-900 text-white p-3 rounded-lg shadow-xl text-xs border border-slate-800 tooltip-arrow-down text-left z-45">
+                                <p class="font-bold text-yellow-400 mb-1">🚨 Masking Nama Palsu!</p>
+                                <p class="leading-relaxed text-[11px] mb-2 text-slate-300">
+                                    Nama pengirim disamarkan menjadi <code class="bg-slate-800 px-1 py-0.5 rounded text-red-400 font-mono">INFO_BRI</code> menggunakan layanan pengirim massal (*SMS Masking*). Bank resmi tidak pernah mengirimkan link undian lewat SMS biasa.
+                                </p>
+                                <div class="flex justify-between items-center pt-1 border-t border-slate-800">
+                                    <span class="text-[10px] text-slate-400">Langkah 1 dari 2</span>
+                                    <button onclick="nextTooltip(2, 1)" class="px-2 py-1 bg-blue-600 rounded text-[10px] font-bold hover:bg-blue-750">Berikutnya →</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- SMS Body Area -->
+                    <div class="bg-slate-100 dark:bg-slate-950 p-3.5 rounded-lg space-y-3 text-xs text-slate-800 dark:text-slate-200">
+                        <p class="leading-relaxed">
+                            Nasabah Yth, selamat! Rekening Anda terpilih sebagai pemenang GEBYAR UNDIAN BRI 2026. Anda berhak mendapatkan hadiah langsung berupa 1 unit Mobil HRV.
+                        </p>
+                        <p class="leading-relaxed">
+                            Segera aktivasi formulir klaim pemenang Anda sebelum hangus melalui tautan resmi di bawah ini:
+                        </p>
+                        
+                        <!-- Nested Relative Target 2-2 -->
+                        <div class="relative inline-block z-30 w-full">
+                            <div id="target-link-2" 
+                                 onmouseenter="showStatusBar(2, 'http://bri-gebyarundian-2026.online')" 
+                                 onmouseleave="hideStatusBar(2)"
+                                 class="p-2.5 bg-yellow-400/10 border border-yellow-400/30 rounded text-yellow-700 dark:text-yellow-300 font-mono font-bold text-[10px] text-center cursor-pointer">
+                                👉 bit.ly/bri-gebyarundian-2026 💡
+                            </div>
+                            
+                            <!-- Aligned Tooltip 2-2 -->
+                            <div id="flag-tooltip-2-2" class="absolute hidden bottom-full left-1/2 -translate-x-1/2 mb-2 w-72 bg-slate-900 text-white p-3 rounded-lg shadow-xl text-xs border border-slate-800 tooltip-arrow-down text-left z-45">
+                                <p class="font-bold text-yellow-400 mb-1">🚨 Tautan Dipendekkan!</p>
+                                <p class="leading-relaxed text-[11px] mb-2 text-slate-300">
+                                    Alamat tautan menggunakan pemendek tautan <code class="bg-slate-800 px-1 py-0.5 rounded text-red-400 font-mono">bit.ly</code> untuk menyembunyikan situs web pemanen data pribadi (OTP/PIN) di <code class="bg-slate-800 px-1 py-0.5 rounded text-red-400 font-mono">bri-gebyarundian-2026.online</code>. Domain resmi harus selalu mengarah ke <code class="bg-slate-800 px-1 py-0.5 rounded text-emerald-400 font-mono">bri.co.id</code>.
+                                </p>
+                                <div class="flex justify-between items-center pt-1 border-t border-slate-800">
+                                    <span class="text-[10px] text-slate-400">Langkah 2 dari 2</span>
+                                    <button onclick="finishExplanation(2)" class="px-2 py-1 bg-emerald-600 rounded text-[10px] font-bold hover:bg-emerald-700">Selesai Membaca ✓</button>
+                                </div>
+                            </div>
+                        </div>
+
+                        <span class="block text-[8px] text-slate-400 text-right mt-1">10:45 AM</span>
+                    </div>
+
+                    <!-- Browser Status Bar Simulation for SMS (simulating smart previews) -->
+                    <div id="status-bar-2" class="absolute bottom-0 left-0 bg-slate-100 dark:bg-slate-800 border-tr border-slate-200 dark:border-slate-700 text-[10px] font-mono text-slate-600 dark:text-slate-300 px-2 py-1 rounded-tr-lg opacity-0 transition-opacity duration-200 pointer-events-none z-10">
+                        http://bri-gebyarundian-2026.online
+                    </div>
+                </div>
+            </div>
+
+            <!-- SLIDE 4: GOOGLE JIGSAW QUIZ - KASUS 3 (Microsoft Security Alert - Legitimate) -->
+            <div id="slide-legit-case" class="slide-content hidden space-y-6">
+                <!-- Jigsaw Header UI -->
+                <div class="text-center max-w-2xl mx-auto space-y-2">
+                    <span class="inline-flex items-center px-2 py-0.5 rounded-full text-[9px] bg-emerald-500/10 text-emerald-600 font-bold uppercase tracking-wider">Modul Perbandingan</span>
+                    <h2 class="text-2xl font-extrabold text-slate-900 dark:text-white" id="jigsaw-title-4">Lalu, apakah pemberitahuan sistem Microsoft ini aman?</h2>
+                    <p class="text-xs text-slate-500 dark:text-slate-400">
+                        Bacalah email notifikasi dari Microsoft perlindungan akun ini secara hati-hati. Apakah ini email Phishing atau Legitimate?
+                    </p>
+                    
+                    <!-- Choice Buttons -->
+                    <div id="choice-container-4" class="flex justify-center gap-3 pt-2">
+                        <button onclick="answerJigsaw(4, 'phishing')" class="px-6 py-2 bg-gradient-to-r from-[#0054A6] to-[#3A6EA5] text-white rounded-lg font-bold text-xs hover:opacity-90 shadow">Phishing</button>
+                        <button onclick="answerJigsaw(4, 'legitimate')" class="px-6 py-2 bg-gradient-to-r from-[#0054A6] to-[#3A6EA5] text-white rounded-lg font-bold text-xs hover:opacity-90 shadow">Legitimate</button>
+                    </div>
+
+                    <!-- Feedback Banner -->
+                    <div id="feedback-banner-4" class="hidden p-3 rounded-xl space-y-1 transition-all">
+                        <h3 id="feedback-title-4" class="font-extrabold text-base"></h3>
+                        <p id="feedback-text-4" class="text-xs text-slate-600 dark:text-slate-300 max-w-lg mx-auto"></p>
+                        <button id="show-me-btn-4" onclick="startExplanation(4)" class="mt-2 px-4 py-1.5 bg-blue-600 hover:bg-blue-700 text-white font-bold text-xs rounded shadow">Tunjukkan Detail 🔍</button>
+                    </div>
+                </div>
+
+                <!-- Jigsaw Email Client Container -->
+                <div class="relative bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-xl shadow-sm max-w-2xl mx-auto">
+                    <!-- Email Header Area -->
+                    <div class="p-4 border-b border-slate-100 dark:border-slate-800 space-y-1 text-xs">
+                        <div class="flex items-center justify-between">
+                            <div class="flex items-center gap-2">
+                                <div class="w-8 h-8 rounded bg-slate-100 flex flex-wrap p-1 gap-0.5 justify-center items-center">
+                                    <span class="w-2.5 h-2.5 bg-[#f25022]"></span><span class="w-2.5 h-2.5 bg-[#7fba00]"></span>
+                                    <span class="w-2.5 h-2.5 bg-[#00a4ef]"></span><span class="w-2.5 h-2.5 bg-[#ffb900]"></span>
+                                </div>
+                                <div>
+                                    <h4 class="font-bold text-slate-900 dark:text-white">Tim Keamanan Akun Microsoft</h4>
+                                    <p class="text-[10px] text-slate-400">Kepada: saya</p>
+                                </div>
+                            </div>
+                            <span class="text-[10px] text-slate-400">08:15 AM</span>
+                        </div>
+                        <div class="pt-2 text-slate-500 dark:text-slate-400">
+                            <strong>Pengirim:</strong> 
+                            
+                            <!-- Nested Relative Target 4-1 -->
+                            <div class="relative inline-block z-30">
+                                <span id="target-sender-4" class="font-mono bg-slate-50 dark:bg-slate-950 px-1.5 py-0.5 rounded cursor-pointer relative border border-transparent text-emerald-600 dark:text-emerald-400">
+                                    &lt;account-security-noreply@accountprotection.microsoft.com&gt;
+                                </span>
+                                
+                                <!-- Aligned Tooltip 4-1 -->
+                                <div id="flag-tooltip-4-1" class="absolute hidden bottom-full left-1/2 -translate-x-1/2 mb-2 w-72 bg-slate-900 text-white p-3 rounded-lg shadow-xl text-xs border border-slate-800 tooltip-arrow-down text-left z-45">
+                                    <p class="font-bold text-emerald-400 mb-1">🟢 Domain Pengirim Resmi!</p>
+                                    <p class="leading-relaxed text-[11px] mb-2 text-slate-300">
+                                        Alamat pengirim menggunakan subdomain resmi <code class="bg-slate-850 px-1 py-0.5 rounded text-emerald-400 font-mono">@accountprotection.microsoft.com</code>. Microsoft selalu menggunakan pengirim yang sudah terverifikasi khusus ini untuk pesan pengamanan akun.
+                                    </p>
+                                    <div class="flex justify-between items-center pt-1 border-t border-slate-800">
+                                        <span class="text-[10px] text-slate-400">Langkah 1 dari 2</span>
+                                        <button onclick="nextTooltip(4, 1)" class="px-2 py-1 bg-blue-600 rounded text-[10px] font-bold hover:bg-blue-750">Berikutnya →</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Email Body Area -->
+                    <div class="p-6 space-y-4 text-xs md:text-sm text-slate-800 dark:text-slate-100 relative">
+                        <div class="max-w-md mx-auto border border-slate-100 dark:border-slate-800 rounded-lg p-5 bg-white dark:bg-slate-900 space-y-4">
+                            <!-- Logo Microsoft Small Grid -->
+                            <div class="flex items-center gap-2">
+                                <div class="w-5 h-5 flex flex-wrap gap-0.5 justify-center items-center">
+                                    <span class="w-1.5 h-1.5 bg-[#f25022]"></span><span class="w-1.5 h-1.5 bg-[#7fba00]"></span>
+                                    <span class="w-1.5 h-1.5 bg-[#00a4ef]"></span><span class="w-1.5 h-1.5 bg-[#ffb900]"></span>
+                                </div>
+                                <span class="text-xs font-bold text-slate-500 font-mono uppercase tracking-wider">Microsoft account</span>
+                            </div>
+                            <h3 class="font-bold text-sm text-slate-900 dark:text-white border-b border-slate-100 dark:border-slate-800 pb-2">Aktivitas masuk yang tidak biasa</h3>
+                            <p class="text-xs text-slate-600 dark:text-slate-300">
+                                Kami mendeteksi sesuatu yang tidak biasa pada aktivitas masuk ke akun Microsoft Anda baru-baru ini. Sebagai contoh, Anda mungkin masuk dari lokasi atau perangkat baru:
+                            </p>
+                            
+                            <!-- Action Button -->
+                            <div class="text-center py-2">
+                                <!-- Nested Relative Target 4-2 -->
+                                <div class="relative inline-block z-30">
+                                    <button id="target-link-4" 
+                                            onmouseenter="showStatusBar(4, 'https://account.microsoft.com/activity')" 
+                                            onmouseleave="hideStatusBar(4)"
+                                            class="px-5 py-2 bg-[#0054A6] text-white font-bold text-xs rounded hover:bg-[#00498F] transition-all shadow-sm">
+                                        Tinjau Aktivitas Masuk
+                                    </button>
+                                    
+                                    <!-- Aligned Tooltip 4-2 -->
+                                    <div id="flag-tooltip-4-2" class="absolute hidden bottom-full left-1/2 -translate-x-1/2 mb-2 w-72 bg-slate-900 text-white p-3 rounded-lg shadow-xl text-xs border border-slate-800 tooltip-arrow-down text-left z-45">
+                                        <p class="font-bold text-emerald-400 mb-1">🟢 Tautan Resmi & Aman!</p>
+                                        <p class="leading-relaxed text-[11px] mb-2 text-slate-300">
+                                            Ketika kursor diarahkan, tautan menunjukkan URL asli <code class="bg-slate-850 px-1 py-0.5 rounded text-emerald-400 font-mono">https://account.microsoft.com/</code> (lihat status bar pojok kiri bawah). Microsoft tidak menggunakan domain aneh pihak ketiga.
+                                        </p>
+                                        <div class="flex justify-between items-center pt-1 border-t border-slate-800">
+                                            <span class="text-[10px] text-slate-400">Langkah 2 dari 2</span>
+                                            <button onclick="finishExplanation(4)" class="px-2 py-1 bg-emerald-600 rounded text-[10px] font-bold hover:bg-emerald-700">Selesai Membaca ✓</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Browser Status Bar Simulation for Microsoft Alert -->
+                    <div id="status-bar-4" class="absolute bottom-0 left-0 bg-slate-100 dark:bg-slate-800 border-tr border-slate-200 dark:border-slate-700 text-[10px] font-mono text-slate-600 dark:text-slate-300 px-2 py-1 rounded-tr-lg opacity-0 transition-opacity duration-200 pointer-events-none z-10">
+                        https://account.microsoft.com/activity
+                    </div>
+                </div>
+            </div>
+
+            <!-- SLIDE 5: GOOGLE JIGSAW QUIZ - KASUS 4 (WA Kurir APK) -->
+            <div id="slide-whatsapp-kuiz" class="slide-content hidden space-y-6">
+                <!-- Jigsaw Header UI -->
+                <div class="text-center max-w-2xl mx-auto space-y-2">
+                    <h2 class="text-2xl font-extrabold text-slate-900 dark:text-white" id="jigsaw-title-3">Terakhir, bagaimana dengan pesan kurir paket ini?</h2>
+                    <p class="text-xs text-slate-500 dark:text-slate-400">
+                        Sebuah pesan masuk di gawai Anda mengaku sebagai kurir pengantar paket J&T. Periksa isinya dengan jeli. Apakah ini Phishing (Malware) atau Legitimate?
+                    </p>
+                    
+                    <!-- Choice Buttons -->
+                    <div id="choice-container-3" class="flex justify-center gap-3 pt-2">
+                        <button onclick="answerJigsaw(3, 'phishing')" class="px-6 py-2 bg-gradient-to-r from-[#0054A6] to-[#3A6EA5] text-white rounded-lg font-bold text-xs hover:opacity-90 shadow">Phishing</button>
+                        <button onclick="answerJigsaw(3, 'legitimate')" class="px-6 py-2 bg-gradient-to-r from-[#0054A6] to-[#3A6EA5] text-white rounded-lg font-bold text-xs hover:opacity-90 shadow">Legitimate</button>
+                    </div>
+
+                    <!-- Feedback Banner -->
+                    <div id="feedback-banner-3" class="hidden p-3 rounded-xl space-y-1 transition-all">
+                        <h3 id="feedback-title-3" class="font-extrabold text-base"></h3>
+                        <p id="feedback-text-3" class="text-xs text-slate-600 dark:text-slate-300 max-w-lg mx-auto"></p>
+                        <button id="show-me-btn-3" onclick="startExplanation(3)" class="mt-2 px-4 py-1.5 bg-blue-600 hover:bg-blue-700 text-white font-bold text-xs rounded shadow">Tunjukkan Detail 🔍</button>
+                    </div>
+                </div>
+
+                <!-- Jigsaw WhatsApp Client Container -->
+                <div class="relative bg-[#ece5dd] dark:bg-slate-950 border border-slate-200 dark:border-slate-800 rounded-xl shadow-sm max-w-sm mx-auto">
+                    <!-- WhatsApp Header -->
+                    <div class="bg-[#075e54] p-3 flex items-center gap-3 text-white">
+                        <div class="w-8 h-8 bg-slate-500 rounded-full flex items-center justify-center font-bold text-xs">KP</div>
+                        <div>
+                            <!-- Nested Relative Target 3-1 -->
+                            <div class="relative inline-block z-30">
+                                <h4 id="target-sender-3" class="font-bold text-xs cursor-pointer hover:underline text-yellow-300">
+                                    J&T Express Indonesia (Kurir) 💡
+                                </h4>
+                                
+                                <!-- Aligned Tooltip 3-1 -->
+                                <div id="flag-tooltip-3-1" class="absolute hidden bottom-full left-1/2 -translate-x-1/2 mb-2 w-72 bg-slate-900 text-white p-3 rounded-lg shadow-xl text-xs border border-slate-800 tooltip-arrow-down text-left z-45">
+                                    <p class="font-bold text-yellow-400 mb-1">🚨 Pengirim Tak Dikenal!</p>
+                                    <p class="leading-relaxed text-[11px] mb-2 text-slate-300">
+                                        Profil pengirim hanya menggunakan nomor telepon seluler pribadi biasa, tidak memiliki logo akun bisnis centang hijau resmi verifikasi korporasi J&T Express.
+                                    </p>
+                                    <div class="flex justify-between items-center pt-1 border-t border-slate-800">
+                                        <span class="text-[10px] text-slate-400">Langkah 1 dari 2</span>
+                                        <button onclick="nextTooltip(3, 1)" class="px-2 py-1 bg-blue-600 rounded text-[10px] font-bold hover:bg-blue-750">Berikutnya →</button>
+                                    </div>
+                                </div>
+                            </div>
+                            <span class="text-[9px] block text-emerald-200">Online</span>
+                        </div>
+                    </div>
+
+                    <!-- Chat Body Area -->
+                    <div class="p-4 space-y-3 min-h-[180px]">
+                        <!-- Bubble Message -->
+                        <div class="bg-white dark:bg-slate-800 p-3 rounded-lg max-w-[280px] shadow-sm space-y-2 text-slate-900 dark:text-slate-100">
+                            <p class="text-[11px] leading-relaxed">
+                                Selamat siang kak, saya kurir J&T. Ada paket besar untuk Anda tapi alamatnya buram dan tidak terbaca. Mohon segera klik berkas di bawah untuk memverifikasi foto paket Anda:
+                            </p>
+                            
+                            <!-- Nested Relative Target 3-2 -->
+                            <div class="relative inline-block z-30 w-full">
+                                <div id="target-link-3" class="p-2.5 bg-red-50 dark:bg-red-950/20 rounded-lg border-2 border-dashed border-red-500 cursor-pointer flex items-center justify-between transition-colors">
+                                    <div class="flex items-center gap-2">
+                                        <span class="text-xl">📁</span>
+                                        <div>
+                                            <p class="text-[10px] font-bold text-red-600 dark:text-red-400 font-mono">Foto_Paket_Lihat_J&T.apk</p>
+                                            <p class="text-[8px] text-slate-500 font-mono">Ukuran: 5.4 MB • Aplikasi</p>
+                                        </div>
+                                    </div>
+                                    <span class="text-[8px] text-white bg-red-600 px-1.5 py-0.5 rounded font-bold">Instal 💡</span>
+                                </div>
+                                
+                                <!-- Aligned Tooltip 3-2 -->
+                                <div id="flag-tooltip-3-2" class="absolute hidden bottom-full left-1/2 -translate-x-1/2 mb-2 w-72 bg-slate-900 text-white p-3 rounded-lg shadow-xl text-xs border border-slate-800 tooltip-arrow-down text-left z-45">
+                                    <p class="font-bold text-yellow-400 mb-1">🚨 Berkas Berbahaya .APK!</p>
+                                    <p class="leading-relaxed text-[11px] mb-2 text-slate-300">
+                                        Nama berkas mengaku sebagai "Foto Paket" namun memiliki akhiran ekstensi <code class="bg-slate-800 px-1 py-0.5 rounded text-red-400 font-mono">.apk</code>. Format gambar asli seharusnya <code class="bg-slate-800 px-1 py-0.5 rounded text-emerald-400 font-mono">.jpg</code> atau <code class="bg-slate-800 px-1 py-0.5 rounded text-emerald-400 font-mono">.png</code>. Berkas APK adalah instalasi sistem Android yang dapat membobol data SMS OTP Anda.
+                                    </p>
+                                    <div class="flex justify-between items-center pt-1 border-t border-slate-800">
+                                        <span class="text-[10px] text-slate-400">Langkah 2 dari 2</span>
+                                        <button onclick="finishExplanation(3)" class="px-2 py-1 bg-emerald-600 rounded text-[10px] font-bold hover:bg-emerald-700">Selesai Membaca ✓</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- SLIDE 6: MITIGASI (BAGAIMANA JIKA TERLANJUR?) -->
+            <div id="slide-darurat" class="slide-content hidden space-y-8">
+                <div class="space-y-3">
+                    <span class="inline-flex items-center px-3 py-1 rounded-full text-xs font-bold bg-red-500/10 text-red-600 dark:text-red-400 border border-red-200 dark:border-red-500/20 uppercase tracking-wider">
+                        6. Langkah Mitigasi
+                    </span>
+                    <h2 class="text-2xl md:text-3xl font-bold text-slate-900 dark:text-white">Terlanjur Mengisi Sandi Palsu?</h2>
+                    <p class="text-xs md:text-sm text-slate-500 dark:text-slate-400">Jalankan 3 langkah mitigasi di bawah untuk menguasai aksi penyelamatan darurat akun Anda.</p>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-12 gap-6 items-start">
+                    <!-- Left Checklist Drill -->
+                    <div class="md:col-span-7 space-y-3">
+                        <button onclick="runDrillStep(1)" id="drill-btn-1" class="w-full text-left p-4 rounded-2xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 hover:bg-slate-100 dark:hover:bg-slate-700 transition flex items-start gap-4 shadow-sm">
+                            <span class="bg-[#0054A6]/20 text-[#0054A6] dark:text-[#3A6EA5] w-6 h-6 rounded-full flex items-center justify-center font-bold text-xs flex-shrink-0 mt-0.5">1</span>
+                            <div>
+                                <h4 class="font-bold text-xs md:text-sm text-slate-800 dark:text-slate-200">Segera Mengganti Sandi</h4>
+                                <p class="text-xs text-slate-500 dark:text-slate-400 mt-1 leading-relaxed">Buka web resmi dari device aman dan ganti kredensial masuk akun kerja utama Anda secara langsung.</p>
+                            </div>
+                        </button>
+
+                        <button onclick="runDrillStep(2)" id="drill-btn-2" class="w-full text-left p-4 rounded-2xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 hover:bg-slate-100 dark:hover:bg-slate-700 transition flex items-start gap-4 shadow-sm">
+                            <span class="bg-[#0054A6]/20 text-[#0054A6] dark:text-[#3A6EA5] w-6 h-6 rounded-full flex items-center justify-center font-bold text-xs flex-shrink-0 mt-0.5">2</span>
+                            <div>
+                                <h4 class="font-bold text-xs md:text-sm text-slate-800 dark:text-slate-200">Cabut Sesi Aktif (Revoke Sessions)</h4>
+                                <p class="text-xs text-slate-500 dark:text-slate-400 mt-1 leading-relaxed">Putuskan seluruh sesi login akun yang sedang aktif untuk melempar keluar peretas.</p>
+                            </div>
+                        </button>
+
+                        <button onclick="runDrillStep(3)" id="drill-btn-3" class="w-full text-left p-4 rounded-2xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 hover:bg-slate-100 dark:hover:bg-slate-700 transition flex items-start gap-4 shadow-sm">
+                            <span class="bg-[#0054A6]/20 text-[#0054A6] dark:text-[#3A6EA5] w-6 h-6 rounded-full flex items-center justify-center font-bold text-xs flex-shrink-0 mt-0.5">3</span>
+                            <div>
+                                <h4 class="font-bold text-xs md:text-sm text-slate-800 dark:text-slate-200">Laporkan Insiden ke Administrator IT</h4>
+                                <p class="text-xs text-slate-500 dark:text-slate-400 mt-1 leading-relaxed">Hubungi tim IT kantor secepatnya agar lalu lintas data dari akun Anda dapat dipantau ekstra.</p>
+                            </div>
+                        </button>
+                    </div>
+
+                    <!-- Right Feedback Phone UI -->
+                    <div class="md:col-span-5 bg-white dark:bg-slate-950 p-4 rounded-xl border border-slate-200 dark:border-slate-800 text-center space-y-4 shadow-sm">
+                        <span class="text-[9px] uppercase tracking-wider text-slate-400 font-mono">Simulator Status Gawai</span>
+                        
+                        <div id="phone-screen" class="bg-slate-50 dark:bg-slate-900 rounded-lg p-3 text-left border border-slate-200 dark:border-slate-800 min-h-[120px] flex flex-col justify-between">
+                            <div class="flex justify-between text-[8px] text-slate-400 font-mono">
+                                <span>10:45 AM</span>
+                                <span id="phone-status">📶 Terkoneksi</span>
+                            </div>
+                            <div class="my-2 space-y-1">
+                                <p id="phone-heading" class="text-xs font-bold text-red-500 leading-tight">Ancaman Berjalan!</p>
+                                <p id="phone-desc" class="text-[9px] text-slate-500 leading-relaxed">Menunggu file jahat .apk mengirimkan data sensitif gawai Anda ke server eksternal...</p>
+                            </div>
+                            <div class="text-[8px] bg-slate-200 dark:bg-slate-800 p-1 rounded text-center text-slate-600 dark:text-slate-400 font-mono" id="phone-foot">
+                                Status: Rentan Teretas
+                            </div>
+                        </div>
+
+                        <p id="drill-explanation" class="text-[10px] text-amber-500 font-semibold leading-relaxed">
+                            Mulai langkah 1 di samping untuk melindungi gawai Anda sekarang!
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- SLIDE 7: METODE SCAN -->
+            <div id="slide-scan" class="slide-content hidden space-y-8">
+                <div class="space-y-3">
+                    <span class="inline-flex items-center px-3 py-1 rounded-full text-xs font-bold bg-blue-500/10 text-blue-600 dark:text-blue-400 border border-blue-500/20 uppercase tracking-wider">
+                        7. Filter Keamanan Mandiri
+                    </span>
+                    <h2 class="text-2xl md:text-3xl font-bold text-slate-900 dark:text-white">Gunakan Metode SCAN Sebelum Bertindak</h2>
+                    <p class="text-xs md:text-sm text-slate-500 dark:text-slate-400">Kerangka praktis 4 langkah penyeleksi pesan mencurigakan.</p>
+                </div>
+
+                <div class="grid grid-cols-2 gap-4">
+                    <div class="bg-white dark:bg-slate-800 p-5 rounded-2xl border border-slate-200 dark:border-slate-700 shadow-sm space-y-2">
+                        <div class="w-10 h-10 bg-[#0054A6]/10 rounded-xl flex items-center justify-center text-[#0054A6] font-bold text-sm">S</div>
+                        <h4 class="font-bold text-sm text-slate-900 dark:text-white">Skrining Pengirim (Sender)</h4>
+                        <p class="text-xs text-slate-500 dark:text-slate-400 leading-relaxed">Verifikasi nomor pengirim atau domain email pengirim secara rinci. Bedakan domain resmi dengan penulisan palsu.</p>
+                    </div>
+
+                    <div class="bg-white dark:bg-slate-800 p-5 rounded-2xl border border-slate-200 dark:border-slate-700 shadow-sm space-y-2">
+                        <div class="w-10 h-10 bg-[#0054A6]/10 rounded-xl flex items-center justify-center text-[#0054A6] font-bold text-sm">C</div>
+                        <h4 class="font-bold text-sm text-slate-900 dark:text-white">Cek Tautan & Berkas</h4>
+                        <p class="text-xs text-slate-500 dark:text-slate-400 leading-relaxed">Sebelum mengklik tombol link, periksa URL tujuan dengan melayangkan kursor di atas tautan.</p>
+                    </div>
+
+                    <div class="bg-white dark:bg-slate-800 p-5 rounded-2xl border border-slate-200 dark:border-slate-700 shadow-sm space-y-2">
+                        <div class="w-10 h-10 bg-amber-500/10 rounded-xl flex items-center justify-center text-amber-500 font-bold text-sm">A</div>
+                        <h4 class="font-bold text-sm text-slate-900 dark:text-white">Amati Unsur Desakan</h4>
+                        <p class="text-xs text-slate-500 dark:text-slate-400 leading-relaxed">Perhatikan penggunaan kata-kata teror/tekanan tinggi seputar hal darurat, denda, atau ancaman pemblokiran yang dibuat sengaja agar Anda panik.</p>
+                    </div>
+
+                    <div class="bg-white dark:bg-slate-800 p-5 rounded-2xl border border-slate-200 dark:border-slate-700 shadow-sm space-y-2">
+                        <div class="w-10 h-10 bg-red-500/10 rounded-xl flex items-center justify-center text-red-500 font-bold text-sm">N</div>
+                        <h4 class="font-bold text-sm text-slate-900 dark:text-white">Nilai & Laporkan</h4>
+                        <p class="text-xs text-slate-500 dark:text-slate-400 leading-relaxed">Jika yakin ini adalah penipuan, hapus pesannya, blokir nomor pengirim, dan laporkan aduan ke saluran resmi instansi terkait.</p>
+                    </div>
+                </div>
+
+                <div class="bg-blue-50 dark:bg-slate-900 border border-blue-200 dark:border-slate-700 rounded-xl p-4 flex items-center justify-between gap-4">
+                    <span class="text-2xl">📞</span>
+                    <span class="text-xs md:text-sm text-slate-550 dark:text-slate-400">Jika Anda ragu dengan hasil pemeriksaan mandiri, jangan mengambil tindakan lebih lanjut. Segera hubungi Tim IT untuk mendapatkan bantuan dan verifikasi.</span>
+                    <button onclick="unlockSlide(6)" class="bg-[#0054A6] hover:bg-[#00498F] text-white font-semibold text-sm px-5 py-2 rounded-xl transition-all shadow-sm whitespace-nowrap">
+                        Saya Mengerti
+                    </button>
+                </div>
+            </div>
+
+            <!-- SLIDE 8: PENUTUP (COMPLETION PAGE) -->
+            <div id="slide-selesai" class="slide-content hidden max-w-2xl mx-auto space-y-8 py-4">
+                <div class="text-center space-y-4">
+                    <div class="w-20 h-20 bg-gradient-to-tr from-[#0054A6] to-[#3A6EA5] rounded-full flex items-center justify-center mx-auto shadow-lg text-4xl animate-bounce">
+                        🏆
+                    </div>
+                    <div class="space-y-2">
+                        <h1 class="text-3xl md:text-4xl font-extrabold tracking-tight text-slate-900 dark:text-white">Selamat!</h1>
+                        <h3 class="text-base md:text-lg font-bold bg-gradient-to-r from-[#0054A6] to-[#3A6EA5] bg-clip-text text-transparent uppercase tracking-wide">
+                            Anda Telah Menyelesaikan Modul Security Awareness
+                        </h3>
+                        <p class="text-xs md:text-sm text-slate-500 dark:text-slate-400 max-w-md mx-auto">
+                            Terima kasih telah meluangkan waktu untuk mempelajari seluruh materi dalam modul Security Awareness yang diselenggarakan oleh Departemen MIS.
+                        </p>
+                    </div>
+                </div>
+
+                <hr class="border-slate-200 dark:border-slate-800 my-4">
+
+                <!-- Highlights Takeaway Card -->
+                <div class="bg-white dark:bg-slate-800 p-6 md:p-8 rounded-2xl border border-slate-200 dark:border-slate-700 space-y-5 shadow-sm text-left">
+                    <h4 class="font-extrabold text-sm text-slate-900 dark:text-white flex items-center gap-2">
+                        <span class="text-lg">📌</span> Yang Perlu Selalu Diingat:
+                    </h4>
+                    
+                    <ul class="space-y-4 text-xs md:text-sm text-slate-600 dark:text-slate-300">
+                        <li class="flex items-start gap-3">
+                            <span class="text-emerald-500 font-bold text-lg leading-none">✓</span>
+                            <span><strong>Selalu verifikasi identitas pengirim</strong> secara cermat sebelum mengeklik tautan atau mengunduh lampiran.</span>
+                        </li>
+                        <li class="flex items-start gap-3">
+                            <span class="text-emerald-500 font-bold text-lg leading-none">✓</span>
+                            <span><strong>Jangan pernah membagikan password maupun kode OTP</strong> kepada siapapun, termasuk pihak yang mengaku sebagai instansi atau bank resmi.</span>
+                        </li>
+                        <li class="flex items-start gap-3">
+                            <span class="text-emerald-500 font-bold text-lg leading-none">✓</span>
+                            <span><strong>Laporkan segera kepada Tim IT</strong> apabila Anda menemukan email atau pesan kerja yang mencurigakan demi keamanan bersama.</span>
+                        </li>
+                    </ul>
+                </div>
+
+                <hr class="border-slate-200 dark:border-slate-800 my-4">
+
+                <!-- Slogan Alert Box -->
+                <div class="p-3 bg-gradient-to-r from-[#0054A6]/10 to-[#3A6EA5]/10 border border-[#0054A6]/20 rounded-xl">
+                    <p class="text-[11px] md:text-xs text-slate-700 dark:text-slate-200 font-semibold">
+                        💡 Keamanan informasi dimulai dari kewaspadaan setiap pengguna.
+                    </p>
+                </div>
+
+                <!-- Custom Actions -->
+                <div class="flex items-center justify-center gap-3 pt-2">
+                    <button onclick="restartModule()" class="px-4 py-2 text-xs font-bold border border-slate-300 dark:border-slate-700 rounded-lg text-slate-600 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-800 transition">
+                        🔄 Ulangi Modul
+                    </button>
+                    <button onclick="triggerToast()" class="px-5 py-2 bg-gradient-to-r from-[#0054A6] to-[#3A6EA5] text-white font-bold text-xs rounded-lg shadow hover:opacity-95 transition">
+                        Selesai ✓
+                    </button>
+                </div>
+            </div>
+
+        </div>
+
+        <!-- SLIDE NAVIGATION CONTROLS -->
+        <div id="nav-controls-container" class="border-t border-slate-200 dark:border-slate-800 pt-4 mt-6 hidden flex-col sm:flex-row items-center justify-between gap-3 bg-[#f8fafc] dark:bg-[#0f172a] transition-all">
+            <!-- Helper text when next is locked -->
+            <div class="text-xs text-red-500 dark:text-red-400 font-medium text-center sm:text-left order-last sm:order-first" id="lock-hint">
+                🔒 Selesaikan tugas singkat di slide ini sebelum melanjutkan.
+            </div>
+
+            <div class="flex items-center gap-3 w-full sm:w-auto justify-end">
+                <button onclick="prevSlide()" id="btn-back" class="w-1/2 sm:w-auto px-4 py-2 text-xs font-bold border border-slate-300 dark:border-slate-700 rounded-lg text-slate-600 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-800 transition disabled:opacity-50 disabled:pointer-events-none">
+                    ← Kembali
+                </button>
+                <button onclick="nextSlide()" id="btn-next" class="w-1/2 sm:w-auto px-5 py-2 text-xs font-bold bg-gradient-to-r from-[#0054A6] to-[#3A6EA5] hover:from-[#00498F] hover:to-[#2F5F96] text-white rounded-lg shadow-md transition disabled:opacity-30 disabled:pointer-events-none">
+                    Lanjut →
+                </button>
+            </div>
+        </div>
+
+    </main>
+
+    <!-- TOAST POPUP FOR CONCLUSION -->
+    <div id="toast-notif" class="fixed bottom-4 right-4 hidden bg-slate-900 text-white px-4 py-3 rounded-xl shadow-2xl z-50 transform translate-y-10 opacity-0 transition-all duration-300 border border-slate-800 max-w-sm flex items-center gap-3">
+        <span class="text-2xl">🎉</span>
+        <div>
+            <h4 class="font-bold text-xs text-emerald-400">Modul Selesai!</h4>
+            <p class="text-[10px] text-slate-400 leading-tight">Terima kasih atas partisipasi Anda dalam menjaga keamanan informasi.</p>
+        </div>
+    </div>
+
+    <!-- FOOTER -->
+    <footer class="bg-white dark:bg-slate-800 border-t border-slate-200 dark:border-slate-700 py-4 text-center text-[10px] text-slate-500 dark:text-slate-400 transition-colors">
+        <div class="max-w-4xl mx-auto px-4">
+            <p>© 2026 © 2026 PhishAware — Modul Edukasi Security Awareness.</p>
+        </div>
+    </footer>
+
+    <!-- INTERACTIVE SLIDERS JAVASCRIPT LOGIC -->
+    <script>
+        // Array of Slide IDs (8 Slides total now)
+        const slides = ['home', 'jenis', 'simulator', 'legit-case', 'whatsapp-kuiz', 'darurat', 'scan', 'selesai'];
+        let currentSlideIndex = 0;
+        
+        // Track slide locks.
+        // Index 0: Slide 1 (Home)
+        // Index 1: Slide 2 (Jigsaw 1)
+        // Index 2: Slide 3 (Jigsaw 2)
+        // Index 3: Slide 4 (Jigsaw 4 - Microsoft Security Alert, Legitimate)
+        // Index 4: Slide 5 (Jigsaw 3 - WA APK, Phishing)
+        // Index 5: Slide 6 (Mitigasi Darurat)
+        // Index 6: Slide 7 (SCAN)
+        // Index 7: Slide 8 (Selesai - Always Unlocked)
+        const slideLocks = [true, true, true, true, true, true, true, false]; // starts locked
+
+        // Jigsaw States
+        // Skenario 1 (Slide 2): Jigsaw Microsoft Teams
+        let jigsawState1 = {
+            answered: false,
+            correct: null,
+            activeTooltipIndex: 0
+        };
+
+        // Skenario 2 (Slide 3): Jigsaw SMS OTP
+        let jigsawState2 = {
+            answered: false,
+            correct: null,
+            activeTooltipIndex: 0
+        };
+
+        // Skenario 3 (Slide 5): Jigsaw WA APK
+        let jigsawState3 = {
+            answered: false,
+            correct: null,
+            activeTooltipIndex: 0
+        };
+
+        // Skenario 4 (Slide 4): Jigsaw Microsoft Security Alert (Aman)
+        let jigsawState4 = {
+            answered: false,
+            correct: null,
+            activeTooltipIndex: 0
+        };
+
+        // Status bar simulation helpers
+        function showStatusBar(scenNum, url) {
+            const statusBar = document.getElementById('status-bar-' + scenNum);
+            if (statusBar) {
+                statusBar.innerText = url;
+                statusBar.classList.remove('opacity-0');
+                statusBar.classList.add('opacity-100');
+            }
+        }
+
+        function hideStatusBar(scenNum) {
+            const statusBar = document.getElementById('status-bar-' + scenNum);
+            if (statusBar) {
+                statusBar.classList.add('opacity-0');
+                statusBar.classList.remove('opacity-100');
+            }
+        }
+
+        // Update view & progress
+        function updateSlidesView() {
+            // Toggle visibility
+            slides.forEach((slideId, index) => {
+                const el = document.getElementById('slide-' + slideId);
+                if (el) {
+                    if (index === currentSlideIndex) {
+                        el.classList.remove('hidden');
+                    } else {
+                        el.classList.add('hidden');
+                    }
+                }
+            });
+
+            // Update Header Text & progress line
+            const slideNumberEl = document.getElementById('slide-number');
+            if (slideNumberEl) {
+                slideNumberEl.innerText = `Slide ${currentSlideIndex + 1} dari 8`;
+            }
+            
+            const progressLine = document.getElementById('progress-line');
+            if (progressLine) {
+                progressLine.style.width = `${((currentSlideIndex + 1) / 8) * 100}%`;
+            }
+
+            // Back button state
+            const btnBack = document.getElementById('btn-back');
+            if (btnBack) {
+                btnBack.disabled = (currentSlideIndex === 0);
+            }
+
+            // Hide navigation footer entirely on Slide 1 (Splash) and Slide 8 (Selesai)
+            const navControls = document.getElementById('nav-controls-container');
+            if (navControls) {
+                if (currentSlideIndex === 0 || currentSlideIndex === 7) {
+                    navControls.classList.add('hidden');
+                } else {
+                    navControls.classList.remove('hidden');
+                    navControls.classList.add('flex');
+                }
+            }
+
+            // Lock / Unlock Next button state
+            checkCurrentLockStatus();
+        }
+
+        // Logic to dynamically lock/unlock navigation controls
+        function checkCurrentLockStatus() {
+            const btnNext = document.getElementById('btn-next');
+            const lockHint = document.getElementById('lock-hint');
+            const isLocked = slideLocks[currentSlideIndex];
+
+            if (btnNext) {
+                if (isLocked) {
+                    btnNext.disabled = true;
+                    if (lockHint) lockHint.classList.remove('hidden');
+                    btnNext.innerText = "Terkunci 🔒";
+                } else {
+                    btnNext.disabled = false;
+                    if (lockHint) lockHint.classList.add('hidden');
+                    if (currentSlideIndex === slides.length - 2) {
+                        btnNext.innerText = "Selesai ✨";
+                    } else {
+                        btnNext.innerText = "Lanjut →";
+                    }
+                }
+            }
+        }
+
+        // Function to explicitly unlock current slide
+        function unlockSlide(index) {
+            if (index >= 0 && index < slideLocks.length) {
+                slideLocks[index] = false;
+            }
+            checkCurrentLockStatus();
+        }
+
+        // Trigger on Slide 1 button
+        function startLearning() {
+            unlockSlide(0);
+            nextSlide();
+        }
+
+        // Slide Navigation Triggers
+        function nextSlide() {
+            if (slideLocks[currentSlideIndex]) return; // locked
+            
+            if (currentSlideIndex < slides.length - 1) {
+                currentSlideIndex++;
+                updateSlidesView();
+            }
+        }
+
+        function prevSlide() {
+            if (currentSlideIndex > 0) {
+                currentSlideIndex--;
+                updateSlidesView();
+            }
+        }
+
+        // ================= JIGSAW LOGIC =================
+        function answerJigsaw(scenNum, answer) {
+            const banner = document.getElementById(`feedback-banner-${scenNum}`);
+            const title = document.getElementById(`feedback-title-${scenNum}`);
+            const text = document.getElementById(`feedback-text-${scenNum}`);
+            const choices = document.getElementById(`choice-container-${scenNum}`);
+
+            // Set state
+            let isCorrect = false;
+            if (scenNum === 1) {
+                jigsawState1.answered = true;
+                isCorrect = (answer === 'phishing');
+                jigsawState1.correct = isCorrect;
+            } else if (scenNum === 2) {
+                jigsawState2.answered = true;
+                isCorrect = (answer === 'phishing');
+                jigsawState2.correct = isCorrect;
+            } else if (scenNum === 3) {
+                jigsawState3.answered = true;
+                isCorrect = (answer === 'phishing');
+                jigsawState3.correct = isCorrect;
+            } else if (scenNum === 4) {
+                jigsawState4.answered = true;
+                isCorrect = (answer === 'legitimate');
+                jigsawState4.correct = isCorrect;
+            }
+
+            if (choices) choices.classList.add('hidden'); // Hide choice options
+            if (banner) banner.classList.remove('hidden'); // Show feedback banner
+
+            if (isCorrect) {
+                if (banner) {
+                    banner.className = "p-4 bg-emerald-500/10 border border-emerald-500/20 rounded-xl text-emerald-800 dark:text-emerald-400 space-y-2";
+                }
+                if (title) title.innerText = "Benar! 🎉";
+                if (text) {
+                    if (scenNum === 1) {
+                        text.innerText = "Ini adalah email phishing yang didesain untuk mencuri kredensial internal Microsoft korporasi Anda.";
+                    } else if (scenNum === 2) {
+                        text.innerText = "Sempurna! Ini adalah taktik Smishing (SMS palsu) untuk meretas akun perbankan digital nasabah.";
+                    } else if (scenNum === 3) {
+                        text.innerText = "Hebat! Berkas .APK di WhatsApp ini adalah malware sniffer OTP yang menyamar sebagai dokumen gambar.";
+                    } else if (scenNum === 4) {
+                        text.innerText = "Luar biasa jeli! Ini memang email resmi aman dari Microsoft. Tanda keamanannya valid di semua parameter.";
+                    }
+                }
+            } else {
+                if (banner) {
+                    banner.className = "p-4 bg-red-500/10 border border-red-500/20 rounded-xl text-red-800 dark:text-red-400 space-y-2";
+                }
+                if (title) title.innerText = "Kurang Tepat ❌";
+                if (text) {
+                    if (scenNum === 1) {
+                        text.innerText = "Ini sebenarnya adalah email penipuan. Mari kita periksa mengapa email ini sangat berbahaya.";
+                    } else if (scenNum === 2) {
+                        text.innerText = "Ini adalah jebakan penipuan SMS berhadiah. Mari kita bedah indikasi ancamannya bersama.";
+                    } else if (scenNum === 3) {
+                        text.innerText = "Waspada! Berkas .APK ini akan meretas gawai Anda. Mari kita periksa polanya.";
+                    } else if (scenNum === 4) {
+                        text.innerText = "Ini adalah email yang sepenuhnya aman. Mari kita tinjau parameternya agar Anda tahu mana yang resmi.";
+                    }
+                }
+            }
+
+            // Unlock current slide navigation
+            unlockSlide(currentSlideIndex);
+        }
+
+        // Guided Red Flags Tour - Slide 2, 3, 4, 5
+        function startExplanation(scenNum) {
+            // Close feedback banner for clear reading
+            const banner = document.getElementById(`feedback-banner-${scenNum}`);
+            if (banner) banner.classList.add('hidden');
+            
+            // Turn on Tooltip step 1
+            if (scenNum === 1) {
+                jigsawState1.activeTooltipIndex = 1;
+                const tooltip = document.getElementById('flag-tooltip-1-1');
+                if (tooltip) tooltip.classList.remove('hidden');
+                const target = document.getElementById('target-sender-1');
+                if (target) target.classList.add('ring-2', 'ring-yellow-500', 'p-1', 'rounded');
+            } else if (scenNum === 2) {
+                jigsawState2.activeTooltipIndex = 1;
+                const tooltip = document.getElementById('flag-tooltip-2-1');
+                if (tooltip) tooltip.classList.remove('hidden');
+                const target = document.getElementById('target-sender-2');
+                if (target) target.classList.add('ring-2', 'ring-yellow-500', 'p-1', 'rounded');
+            } else if (scenNum === 3) {
+                jigsawState3.activeTooltipIndex = 1;
+                const tooltip = document.getElementById('flag-tooltip-3-1');
+                if (tooltip) tooltip.classList.remove('hidden');
+                const target = document.getElementById('target-sender-3');
+                if (target) target.classList.add('ring-2', 'ring-yellow-500', 'p-1', 'rounded');
+            } else if (scenNum === 4) {
+                jigsawState4.activeTooltipIndex = 1;
+                const tooltip = document.getElementById('flag-tooltip-4-1');
+                if (tooltip) tooltip.classList.remove('hidden');
+                const target = document.getElementById('target-sender-4');
+                if (target) target.classList.add('ring-2', 'ring-emerald-500', 'p-1', 'rounded');
+            }
+        }
+
+        function nextTooltip(scenNum, currentStep) {
+            if (scenNum === 1) {
+                if (currentStep === 1) {
+                    const t1 = document.getElementById('flag-tooltip-1-1');
+                    const ts = document.getElementById('target-sender-1');
+                    if (t1) t1.classList.add('hidden');
+                    if (ts) ts.classList.remove('ring-2', 'ring-yellow-500');
+                    
+                    const t2 = document.getElementById('flag-tooltip-1-2');
+                    const tl = document.getElementById('target-link-1');
+                    if (t2) t2.classList.remove('hidden');
+                    if (tl) tl.classList.add('ring-2', 'ring-yellow-500');
+                }
+            } else if (scenNum === 2) {
+                if (currentStep === 1) {
+                    const t1 = document.getElementById('flag-tooltip-2-1');
+                    const ts = document.getElementById('target-sender-2');
+                    if (t1) t1.classList.add('hidden');
+                    if (ts) ts.classList.remove('ring-2', 'ring-yellow-500');
+
+                    const t2 = document.getElementById('flag-tooltip-2-2');
+                    const tl = document.getElementById('target-link-2');
+                    if (t2) t2.classList.remove('hidden');
+                    if (tl) tl.classList.add('ring-2', 'ring-yellow-500');
+                }
+            } else if (scenNum === 3) {
+                if (currentStep === 1) {
+                    const t1 = document.getElementById('flag-tooltip-3-1');
+                    const ts = document.getElementById('target-sender-3');
+                    if (t1) t1.classList.add('hidden');
+                    if (ts) ts.classList.remove('ring-2', 'ring-yellow-500');
+
+                    const t2 = document.getElementById('flag-tooltip-3-2');
+                    const tl = document.getElementById('target-link-3');
+                    if (t2) t2.classList.remove('hidden');
+                    if (tl) tl.classList.add('ring-2', 'ring-yellow-500');
+                }
+            } else if (scenNum === 4) {
+                if (currentStep === 1) {
+                    const t1 = document.getElementById('flag-tooltip-4-1');
+                    const ts = document.getElementById('target-sender-4');
+                    if (t1) t1.classList.add('hidden');
+                    if (ts) ts.classList.remove('ring-2', 'ring-emerald-500');
+
+                    const t2 = document.getElementById('flag-tooltip-4-2');
+                    const tl = document.getElementById('target-link-4');
+                    if (t2) t2.classList.remove('hidden');
+                    if (tl) tl.classList.add('ring-2', 'ring-emerald-500');
+                }
+            }
+        }
+
+        function finishExplanation(scenNum) {
+            if (scenNum === 1) {
+                const t2 = document.getElementById('flag-tooltip-1-2');
+                const tl = document.getElementById('target-link-1');
+                if (t2) t2.classList.add('hidden');
+                if (tl) tl.classList.remove('ring-2', 'ring-yellow-500');
+            } else if (scenNum === 2) {
+                const t2 = document.getElementById('flag-tooltip-2-2');
+                const tl = document.getElementById('target-link-2');
+                if (t2) t2.classList.add('hidden');
+                if (tl) tl.classList.remove('ring-2', 'ring-yellow-500');
+            } else if (scenNum === 3) {
+                const t2 = document.getElementById('flag-tooltip-3-2');
+                const tl = document.getElementById('target-link-3');
+                if (t2) t2.classList.add('hidden');
+                if (tl) tl.classList.remove('ring-2', 'ring-yellow-500');
+            } else if (scenNum === 4) {
+                const t2 = document.getElementById('flag-tooltip-4-2');
+                const tl = document.getElementById('target-link-4');
+                if (t2) t2.classList.add('hidden');
+                if (tl) tl.classList.remove('ring-2', 'ring-emerald-500');
+            }
+
+            // Re-show feedback summary banner
+            const banner = document.getElementById(`feedback-banner-${scenNum}`);
+            if (banner) banner.classList.remove('hidden');
+            
+            const showMeBtn = document.getElementById(`show-me-btn-${scenNum}`);
+            if (showMeBtn) showMeBtn.innerText = "Ulangi Detail 🔄";
+        }
+
+        // ================= DRILL ACTIONS (Slide 6) =================
+        let drillProgress = 0;
+        function runDrillStep(stepNum) {
+            const phStatus = document.getElementById('phone-status');
+            const phHeading = document.getElementById('phone-heading');
+            const phDesc = document.getElementById('phone-desc');
+            const phFoot = document.getElementById('phone-foot');
+            const explanation = document.getElementById('drill-explanation');
+
+            // Reset step highlights
+            for (let i = 1; i <= 3; i++) {
+                const btn = document.getElementById('drill-btn-' + i);
+                if (btn) btn.classList.remove('border-[#0054A6]', 'bg-blue-500/10');
+            }
+
+            // Highlight current clicked step button
+            const activeBtn = document.getElementById('drill-btn-' + stepNum);
+            if (activeBtn) activeBtn.classList.add('border-[#0054A6]', 'bg-blue-500/10');
+
+            if (stepNum === 1) {
+                if (phStatus) {
+                    phStatus.innerText = "✈️ Mode Pesawat (Isolasi)";
+                    phStatus.className = "text-amber-500 font-bold";
+                }
+                if (phHeading) {
+                    phHeading.innerText = "Jaringan Diputus 🔌";
+                    phHeading.className = "text-xs font-bold text-amber-500 leading-tight";
+                }
+                if (phDesc) {
+                    phDesc.innerText = "Server penyerang tidak dapat lagi berkomunikasi atau menyalin SMS OTP Anda.";
+                }
+                if (phFoot) phFoot.innerText = "Status: Aman Sementara";
+                if (explanation) explanation.innerText = "Bagus! Jaringan terputus. Sekarang, jalankan Langkah 2.";
+                drillProgress = 1;
+            } else if (stepNum === 2 && drillProgress >= 1) {
+                if (phHeading) {
+                    phHeading.innerText = "Kata Sandi Diperbarui 🔐";
+                    phHeading.className = "text-xs font-bold text-emerald-500 leading-tight";
+                }
+                if (phDesc) {
+                    phDesc.innerText = "Dengan mengganti password via perangkat aman, akses peretas otomatis dihentikan.";
+                }
+                if (phFoot) phFoot.innerText = "Status: Sesi Peretas Ditutup";
+                if (explanation) explanation.innerText = "Hebat! Sesi peretas hangus. Selesaikan Langkah 3.";
+                drillProgress = 2;
+            } else if (stepNum === 3 && drillProgress >= 2) {
+                if (phHeading) {
+                    phHeading.innerText = "Laporan Dikirim 🛡️";
+                    phHeading.className = "text-xs font-bold text-blue-500 leading-tight";
+                }
+                if (phDesc) {
+                    phDesc.innerText = "Tim IT telah bersiap dan memantau lalu lintas data mencurigakan.";
+                }
+                if (phFoot) phFoot.innerText = "Status: Terlindungi Sempurna";
+                if (explanation) explanation.innerText = "Sempurna! Semua langkah mitigasi darurat telah dikuasai.";
+                drillProgress = 3;
+                
+                // Unlock slide 6 (index 5)
+                unlockSlide(5);
+            } else {
+                if (explanation) explanation.innerText = "⚠️ Harap ikuti langkah evakuasi secara berurutan (Mulai dari 1)!";
+            }
+        }
+
+        // ================= RESTART & SUCCESS SYSTEM =================
+        function restartModule() {
+            // Reset locks
+            slideLocks[0] = true;
+            slideLocks[1] = true;
+            slideLocks[2] = true;
+            slideLocks[3] = true;
+            slideLocks[4] = true;
+            slideLocks[5] = true;
+            slideLocks[6] = true;
+
+            // Reset Jigsaw 1 State
+            jigsawState1.answered = false;
+            const c1 = document.getElementById('choice-container-1');
+            if (c1) c1.classList.remove('hidden');
+            const f1 = document.getElementById('feedback-banner-1');
+            if (f1) f1.classList.add('hidden');
+
+            // Reset Jigsaw 2 State
+            jigsawState2.answered = false;
+            const c2 = document.getElementById('choice-container-2');
+            if (c2) c2.classList.remove('hidden');
+            const f2 = document.getElementById('feedback-banner-2');
+            if (f2) f2.classList.add('hidden');
+
+            // Reset Jigsaw 3 State
+            jigsawState3.answered = false;
+            const c3 = document.getElementById('choice-container-3');
+            if (c3) c3.classList.remove('hidden');
+            const f3 = document.getElementById('feedback-banner-3');
+            if (f3) f3.classList.add('hidden');
+
+            // Reset Jigsaw 4 State
+            jigsawState4.answered = false;
+            const c4 = document.getElementById('choice-container-4');
+            if (c4) c4.classList.remove('hidden');
+            const f4 = document.getElementById('feedback-banner-4');
+            if (f4) f4.classList.add('hidden');
+
+            // Reset Drill
+            drillProgress = 0;
+            const de = document.getElementById('drill-explanation');
+            if (de) de.innerText = "Mulai langkah 1 di samping untuk melindungi gawai Anda sekarang!";
+            
+            const ps = document.getElementById('phone-status');
+            if (ps) {
+                ps.innerText = "📶 Terkoneksi";
+                ps.className = "";
+            }
+            const ph = document.getElementById('phone-heading');
+            if (ph) {
+                ph.innerText = "Ancaman Berjalan!";
+                ph.className = "text-xs font-bold text-red-500 leading-tight";
+            }
+            const pd = document.getElementById('phone-desc');
+            if (pd) pd.innerText = "Menunggu file jahat .apk mengirimkan data sensitif gawai Anda ke server eksternal...";
+            
+            const pf = document.getElementById('phone-foot');
+            if (pf) pf.innerText = "Status: Rentan Teretas";
+            
+            for (let i = 1; i <= 3; i++) {
+                const btn = document.getElementById('drill-btn-' + i);
+                if (btn) btn.classList.remove('border-[#0054A6]', 'bg-blue-500/10');
+            }
+
+            currentSlideIndex = 0;
+            updateSlidesView();
+        }
+
+        function triggerToast() {
+            const toast = document.getElementById('toast-notif');
+            if (toast) {
+                toast.classList.remove('hidden');
+                setTimeout(() => {
+                    toast.classList.remove('translate-y-10', 'opacity-0');
+                }, 50);
+
+                setTimeout(() => {
+                    toast.classList.add('translate-y-10', 'opacity-0');
+                    setTimeout(() => {
+                        toast.classList.add('hidden');
+                    }, 300);
+                }, 4000);
+            }
+        }
+
+        // ================= LIGHT/DARK THEME HANDLING =================
+        function initTheme() {
+            const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+            const savedTheme = localStorage.getItem('theme');
+
+            if (savedTheme === 'dark' || (!savedTheme && prefersDark)) {
+                document.documentElement.classList.add('dark');
+            } else {
+                document.documentElement.classList.remove('dark');
+            }
+            updateThemeIcons();
+        }
+
+        function toggleTheme() {
+            if (document.documentElement.classList.contains('dark')) {
+                document.documentElement.classList.remove('dark');
+                localStorage.setItem('theme', 'light');
+            } else {
+                document.documentElement.classList.add('dark');
+                localStorage.setItem('theme', 'dark');
+            }
+            updateThemeIcons();
+        }
+
+        function updateThemeIcons() {
+            const sunIcon = document.getElementById('theme-icon-sun');
+            const moonIcon = document.getElementById('theme-icon-moon');
+            const isDark = document.documentElement.classList.contains('dark');
+
+            if (isDark) {
+                if (sunIcon) sunIcon.classList.remove('hidden');
+                if (moonIcon) moonIcon.classList.add('hidden');
+            } else {
+                if (sunIcon) sunIcon.classList.add('hidden');
+                if (moonIcon) moonIcon.classList.remove('hidden');
+            }
+        }
+
+        // Run Initializers
+        initTheme();
+        updateSlidesView();
+    </script>
+</body>
+</html>

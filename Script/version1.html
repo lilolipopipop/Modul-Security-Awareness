@@ -1,0 +1,744 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PhishAware - Edukasi Keamanan Siber Mandiri</title>
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: {
+                        cyber: {
+                            darkBg: '#0f172a',
+                            darkCard: '#1e293b',
+                            card: '#1e293b',
+                            lightBg: '#f8fafc',
+                            lightCard: '#ffffff',
+                            primary: '#0054A6',
+                            warning: '#f59e0b',
+                            danger: '#ef4444',
+                            accent: '#3A6EA5'
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght=300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            transition: background-color 0.3s, color 0.3s;
+        }
+        /* Custom scrollbar */
+        ::-webkit-scrollbar {
+            width: 6px;
+        }
+        ::-webkit-scrollbar-track {
+            background: transparent;
+        }
+        .dark ::-webkit-scrollbar-thumb {
+            background: #1e293b;
+            border-radius: 4px;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #cbd5e1;
+            border-radius: 4px;
+        }
+    </style>
+</head>
+<body class="bg-slate-50 text-slate-800 dark:bg-[#0f172a] dark:text-slate-100 min-h-screen flex flex-col transition-colors duration-300">
+
+    <!-- HEADER & PROGRESS BAR -->
+    <header class="bg-white dark:bg-[#1e293b] border-b border-slate-200 dark:border-slate-800 sticky top-0 z-50 transition-colors duration-300">
+        <div class="max-w-4xl mx-auto px-6 py-4 flex items-center justify-between">
+            <!-- Logo -->
+            <div class="flex items-center gap-3">
+                <div class="bg-gradient-to-tr from-[#0054A6] to-[#3A6EA5] p-2 rounded-xl text-white shadow-sm">
+                    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"></path>
+                    </svg>
+                </div>
+                <div>
+                    <span class="font-extrabold text-lg tracking-tight bg-gradient-to-r from-[#0054A6] to-[#3A6EA5] bg-clip-text text-transparent">PhishAware</span>
+                    <span class="text-[10px] block text-slate-400 font-bold tracking-wider uppercase">Modul Security Awareness</span>
+                </div>
+            </div>
+
+            <!-- Progress Indicator -->
+            <div class="flex items-center gap-4">
+                <span class="text-xs font-bold text-slate-500 dark:text-slate-400" id="slide-number">
+                    Slide 1 dari 6
+                </span>
+                
+                <!-- Theme Toggle -->
+                <button onclick="toggleTheme()" class="p-2 rounded-xl text-slate-500 dark:text-slate-400 hover:bg-slate-100 dark:hover:bg-slate-850 transition-colors" title="Ubah Tema">
+                    <svg id="theme-icon-sun" class="w-4 h-4 hidden" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364-6.364l-.707.707M6.343 17.657l-.707.707m12.728 0l-.707-.707M6.343 6.364l-.707-.707M12 8a4 4 0 100 8 4 4 0 000-8z"></path>
+                    </svg>
+                    <svg id="theme-icon-moon" class="w-4 h-4 hidden" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"></path>
+                    </svg>
+                </button>
+            </div>
+        </div>
+        
+        <!-- Interactive Progress Line -->
+        <div class="w-full bg-slate-200 dark:bg-slate-800 h-1.5">
+            <div id="progress-line" class="bg-gradient-to-r from-[#0054A6] to-[#3A6EA5] h-1.5 w-1/6 transition-all duration-300"></div>
+        </div>
+    </header>
+
+    <!-- MAIN IMMERSIVE CONTENT -->
+    <main class="flex-grow max-w-4xl w-full mx-auto px-6 py-8 flex flex-col justify-between">
+
+        <!-- SLIDERS WRAPPER -->
+        <div class="flex-grow flex flex-col justify-center">
+
+            <!-- SLIDE 1: INTRO -->
+            <div id="slide-home" class="slide-content space-y-8">
+                <div class="space-y-4">
+                    <span class="inline-flex items-center px-3 py-1 rounded-full text-xs font-bold bg-blue-500/10 text-blue-600 dark:text-blue-400 border border-blue-500/20 uppercase tracking-wider">
+                        1. Pengantar Keamanan Informasi
+                    </span>
+                    <h1 class="text-3xl md:text-5xl font-extrabold tracking-tight text-slate-900 dark:text-white leading-tight">
+                        Mengapa <span class="bg-gradient-to-r from-[#0054A6] to-[#3A6EA5] bg-clip-text text-transparent">Security Awareness</span> Penting Bagi Kita?
+                    </h1>
+                </div>
+
+                <div class="bg-white dark:bg-slate-800 p-6 md:p-8 rounded-2xl border border-slate-200 dark:border-slate-800 shadow-sm space-y-6">
+                    <p class="text-slate-600 dark:text-slate-300 text-sm leading-relaxed">
+                        Di era digital, pertahanan siber tidak hanya bergantung pada teknologi, tetapi juga pada <strong>kewaspadaan setiap pengguna</strong>. Itulah sebabnya penjahat siber lebih sering memanfaatkan kelengahan manusia melalui rekayasa sosial dibanding mencoba membobol sistem secara langsung.
+                    </p>
+
+                    <!-- Core Facts -->
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-3 pt-2">
+                        <div class="flex gap-3 items-start bg-slate-50 dark:bg-slate-900 p-3 rounded-xl">
+                            <span class="text-xl">🔥</span>
+                            <div>
+                                <h4 class="font-bold text-xs text-slate-800 dark:text-slate-200">90% Kebocoran Data</h4>
+                                <p class="text-[11px] text-slate-500 dark:text-slate-400">Diawali oleh kelalaian manusia mengklik tautan tidak dikenal.</p>
+                            </div>
+                        </div>
+                        <div class="flex gap-3 items-start bg-slate-50 dark:bg-slate-900 p-3 rounded-xl">
+                            <span class="text-xl">🛡️</span>
+                            <div>
+                                <h4 class="font-bold text-xs text-slate-800 dark:text-slate-200">Human Firewall</h4>
+                                <p class="text-[11px] text-slate-500 dark:text-slate-400">Anda adalah pelindung instan untuk data pribadi dan aset kantor.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Easy Unlock Action -->
+                <div class="bg-blue-50 dark:bg-blue-950/20 p-5 rounded-2xl border border-blue-500/20 flex flex-col sm:flex-row items-center justify-between gap-4">
+                    <div class="text-xs text-blue-800 dark:text-blue-400 text-center sm:text-left">
+                        <strong>Tugas Cepat:</strong> Klik tombol konfirmasi untuk membuka slide berikutnya secara instan.
+                    </div>
+                    <button onclick="startLearning()" class="w-full sm:w-auto px-6 py-2.5 bg-gradient-to-r from-[#0054A6] to-[#3A6EA5] hover:from-[#00498F] hover:to-[#2F5F96] text-white font-bold text-xs md:text-sm rounded-xl shadow-md transition-all">
+                        Saya Siap, Mulai Belajar ⚡
+                    </button>
+                </div>
+            </div>
+
+            <!-- SLIDE 2: JENIS PHISHING -->
+            <div id="slide-jenis" class="slide-content hidden space-y-8">
+                <div class="space-y-3">
+                    <span class="inline-flex items-center px-3 py-1 rounded-full text-xs font-bold bg-amber-500/10 text-amber-600 dark:text-amber-400 border border-amber-500/20 uppercase tracking-wider">
+                        2. Highlight Ancaman Terbesar
+                    </span>
+                    <h2 class="text-2xl md:text-3xl font-bold text-slate-900 dark:text-white">Phishing Credential Harvesting</h2>
+                    <p class="text-xs md:text-sm text-slate-500 dark:text-slate-400">Pelajari bagaimana penyerang memanfaatkan halaman login palsu untuk mencuri kredensial. Buka setiap kartu di bawah untuk melihat tahapan serangannya.</p>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+                    <!-- Card 1 -->
+                    <div id="sc-card-1" onclick="readTaktik(1)" class="cursor-pointer bg-white dark:bg-slate-800 p-5 rounded-2xl border border-slate-200 dark:border-slate-750 hover:border-[#0054A6] dark:hover:border-[#0054A6] transition-all space-y-3 relative shadow-sm">
+                        <div class="flex justify-between items-center">
+                            <span class="text-2xl">📧</span>
+                            <span id="sc-check-1" class="text-slate-400 dark:text-slate-500 text-xs font-semibold">⚪ Belum Dibuka</span>
+                        </div>
+                        <h4 class="font-bold text-sm text-slate-900 dark:text-white">Umpan Email Kloningan</h4>
+                        <p class="text-xs text-slate-500 dark:text-slate-400 leading-relaxed">Penyamaran sebagai tim IT, HR, atau notifikasi Microsoft Teams/Outlook resmi.</p>
+                        <div id="sc-desc-1" class="hidden text-xs bg-slate-50 dark:bg-slate-900 p-3 rounded-xl text-slate-600 dark:text-slate-300 leading-relaxed mt-3 border-t border-slate-100 dark:border-slate-800">
+                            <strong>Metode:</strong> Rekayasa email dengan nama pengirim yang mirip (spoofing) disertai dokumen lampiran "Pemberitahuan Mendesak".
+                        </div>
+                    </div>
+
+                    <!-- Card 2 -->
+                    <div id="sc-card-2" onclick="readTaktik(2)" class="cursor-pointer bg-white dark:bg-slate-800 p-5 rounded-2xl border border-slate-200 dark:border-slate-755 hover:border-[#0054A6] dark:hover:border-[#0054A6] transition-all space-y-3 relative shadow-sm">
+                        <div class="flex justify-between items-center">
+                            <span class="text-2xl">🖥️</span>
+                            <span id="sc-check-2" class="text-slate-400 dark:text-slate-500 text-xs font-semibold">⚪ Belum Dibuka</span>
+                        </div>
+                        <h4 class="font-bold text-sm text-slate-900 dark:text-white">Formulir Login Tiruan</h4>
+                        <p class="text-xs text-slate-500 dark:text-slate-400 leading-relaxed">Target diarahkan ke halaman login palsu buatan peretas.</p>
+                        <div id="sc-desc-2" class="hidden text-xs bg-slate-50 dark:bg-slate-900 p-3 rounded-xl text-slate-600 dark:text-slate-300 leading-relaxed mt-3 border-t border-slate-100 dark:border-slate-800">
+                            <strong>Metode:</strong> Halaman web dirancang persis seperti portal otentikasi login Microsoft 365, Google Workspace, atau portal internal HR.
+                        </div>
+                    </div>
+
+                    <!-- Card 3 -->
+                    <div id="sc-card-3" onclick="readTaktik(3)" class="cursor-pointer bg-white dark:bg-slate-800 p-5 rounded-2xl border border-slate-200 dark:border-slate-755 hover:border-[#0054A6] dark:hover:border-[#0054A6] transition-all space-y-3 relative shadow-sm">
+                        <div class="flex justify-between items-center">
+                            <span class="text-2xl">🔑</span>
+                            <span id="sc-check-3" class="text-slate-400 dark:text-slate-500 text-xs font-semibold">⚪ Belum Dibuka</span>
+                        </div>
+                        <h4 class="font-bold text-sm text-slate-900 dark:text-white">Pemanenan & Hijacking</h4>
+                        <p class="text-xs text-slate-500 dark:text-slate-400 leading-relaxed">Pengiriman langsung data rahasia Anda ke server penjahat.</p>
+                        <div id="sc-desc-3" class="hidden text-xs bg-slate-50 dark:bg-slate-900 p-3 rounded-xl text-slate-600 dark:text-slate-300 leading-relaxed mt-3 border-t border-slate-100 dark:border-slate-800">
+                            <strong>Metode:</strong> Begitu Anda memasukkan kata sandi atau OTP, penyerang langsung menggunakannya secara real-time untuk menguasai akun.
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Other types of phishing -->
+                <div class="bg-slate-100 dark:bg-slate-900/40 p-5 rounded-2xl border border-slate-200 dark:border-slate-800 space-y-3">
+                    <h4 class="font-bold text-xs uppercase tracking-wider text-slate-400">Tipe Phishing Lainnya</h4>
+                    <div class="grid grid-cols-1 sm:grid-cols-3 gap-4 text-xs leading-relaxed text-slate-600 dark:text-slate-300">
+                        <div>
+                            <strong>📦 APK Kurir & Undangan:</strong>
+                            <p class="text-[11px] text-slate-500">Berkas berformat .apk yang disebar lewat obrolan instan untuk meretas SMS OTP perbankan.</p>
+                        </div>
+                        <div>
+                            <strong>💸 Stiker QRIS Palsu:</strong>
+                            <p class="text-[11px] text-slate-500">Manipulasi stiker kode pembayaran merchant umum demi mengalihkan transaksi dana korban.</p>
+                        </div>
+                        <div>
+                            <strong>📞 Smishing & Vishing:</strong>
+                            <p class="text-[11px] text-slate-500">Pancingan SMS bertautan asing atau manipulasi panggilan suara customer service tiruan.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <p id="slide-jenis-helper" class="text-center text-xs text-slate-500 dark:text-slate-400 bg-slate-100 dark:bg-slate-900 p-3 rounded-xl border border-slate-200 dark:border-slate-800">
+                     Selesaikan membaca dengan mengklik ketiga kartu di atas untuk mengaktifkan navigasi ke slide selanjutnya.
+                </p>
+            </div>
+
+            <!-- SLIDE 3: LAB DETEKSI -->
+            <div id="slide-simulator" class="slide-content hidden space-y-8">
+                <div class="space-y-3">
+                    <span class="inline-flex items-center px-3 py-1 rounded-full text-xs font-bold bg-blue-500/10 text-blue-600 dark:text-blue-400 border border-blue-500/20 uppercase tracking-wider">
+                        3. Lab Simulasi Deteksi
+                    </span>
+                    <h2 class="text-2xl md:text-3xl font-bold text-slate-900 dark:text-white">Email Credential Harvesting</h2>
+                    <p class="text-xs md:text-sm text-slate-500 dark:text-slate-400">Analisis email di bawah. Temukan kejanggalan dengan mengklik area berlampu <span class="text-amber-500">💡</span>.</p>
+                </div>
+
+                <!-- Simulator Container: Email Client Mockup -->
+                <div class="bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-2xl overflow-hidden shadow-sm">
+                    <!-- Email Header Interface -->
+                    <div class="bg-slate-100 dark:bg-slate-950 p-4 border-b border-slate-200 dark:border-slate-800 space-y-2 text-xs">
+                        <div class="flex items-center justify-between">
+                            <div>
+                                <span class="text-slate-400 font-medium">Dari:</span>
+                                <span onclick="clickRedFlag('pengirim', 'Domain Pengirim Palsu: Alamat tim-it@datascrip-support.id menggunakan domain sekunder palsu. Tim IT resmi tidak akan menggunakan nama domain tambahan tak terverifikasi!')" 
+                                      class="font-mono font-semibold text-red-500 bg-red-500/5 px-2.5 py-1 rounded-lg border border-red-500/20 cursor-pointer hover:bg-red-500/10">
+                                    tim-it@datascrip-support.id 💡
+                                </span>
+                            </div>
+                            <span class="text-slate-400">Hari ini, 09:12 AM</span>
+                        </div>
+                        <div class="pt-1">
+                            <span class="text-slate-400 font-medium">Subjek:</span>
+                            <span class="font-bold text-slate-800 dark:text-slate-200">[Mendesak] Verifikasi Sandi Akun & Kebijakan Kepatuhan Baru</span>
+                        </div>
+                    </div>
+
+                    <!-- Email Content Area -->
+                    <div class="p-6 space-y-4 text-xs md:text-sm leading-relaxed text-slate-700 dark:text-slate-300">
+                        <p>Halo Rekan Karyawan,</p>
+                        
+                        <p>
+                            Berdasarkan audit kepatuhan siber triwulan terbaru, Anda diwajibkan untuk meninjau berkas pedoman penanganan insiden dan memverifikasi kata sandi akun sistem Anda sebelum berakhirnya hari kerja ini demi menjaga keamanan data perusahaan.
+                        </p>
+
+                        <!-- Call to Action Box -->
+                        <div class="bg-slate-50 dark:bg-slate-950 p-5 rounded-xl border border-slate-200 dark:border-slate-800 space-y-4">
+                            <div class="flex items-center gap-3">
+                                <span class="text-2xl">📄</span>
+                                <div>
+                                    <h4 class="font-bold text-slate-800 dark:text-slate-200">Guideline_Kepatuhan_Sandi.pdf</h4>
+                                    <p class="text-[10px] text-slate-400">Dokumen Internal Korporasi</p>
+                                </div>
+                            </div>
+                            
+                            <button onclick="clickRedFlag('tombol-login', 'Bahaya Tautan Login Tiruan: Tombol ini mengarahkan Anda ke portal login replika. Ketika Anda mengetik sandi akun, peretas langsung mencatat kredensial untuk melakukan pembobolan sistem.')"
+                                    class="w-full sm:w-auto px-5 py-2.5 bg-[#0054A6] text-white rounded-xl font-bold hover:bg-[#00498F] transition flex items-center justify-center gap-2">
+                                Verifikasi Login Akun Microsoft 365 💡
+                            </button>
+                        </div>
+
+                        <p class="text-[11px] text-slate-400 italic">
+                            Catatan: Kegagalan dalam memperbarui kredensial dapat berakibat pada pembatasan akses kerja sementara.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Analysis Feedback Box -->
+                <div class="p-4 bg-slate-100 dark:bg-slate-800 rounded-xl border border-slate-200 dark:border-slate-700 min-h-[60px] flex items-center gap-4" id="lab-feedback-box">
+                    <span class="text-2xl">🔍</span>
+                    <p class="text-xs md:text-sm text-slate-600 dark:text-slate-300" id="lab-feedback-text">
+                        Klik bagian alamat pengirim merah atau tombol verifikasi biru di atas untuk menemukan anomali keamanan kritis.
+                    </p>
+                </div>
+            </div>
+
+            <!-- SLIDE 4: METODE SCAN -->
+            <div id="slide-scan" class="slide-content hidden space-y-8">
+                <div class="space-y-3">
+                    <span class="inline-flex items-center px-3 py-1 rounded-full text-xs font-bold bg-blue-500/10 text-blue-600 dark:text-blue-400 border border-blue-500/20 uppercase tracking-wider">
+                        4. Filter Keamanan Mandiri
+                    </span>
+                    <h2 class="text-2xl md:text-3xl font-bold text-slate-900 dark:text-white">Gunakan Metode SCAN Sebelum Bertindak</h2>
+                    <p class="text-xs md:text-sm text-slate-500 dark:text-slate-400">Kerangka praktis 4 langkah penyeleksi pesan mencurigakan.</p>
+                </div>
+
+                <div class="grid grid-cols-2 gap-4">
+                    <div class="bg-white dark:bg-slate-800 p-5 rounded-2xl border border-slate-200 dark:border-slate-700 shadow-sm space-y-2">
+                        <div class="w-10 h-10 bg-[#0054A6]/10 rounded-xl flex items-center justify-center text-[#0054A6] font-bold text-sm">S</div>
+                        <h4 class="font-bold text-sm text-slate-900 dark:text-white">Skrining Pengirim (Sender)</h4>
+                        <p class="text-xs text-slate-500 dark:text-slate-400 leading-relaxed">Verifikasi nomor pengirim atau domain email pengirim secara rinci. Bedakan domain resmi dengan penulisan palsu.</p>
+                    </div>
+
+                    <div class="bg-white dark:bg-slate-800 p-5 rounded-2xl border border-slate-200 dark:border-slate-700 shadow-sm space-y-2">
+                        <div class="w-10 h-10 bg-[#0054A6]/10 rounded-xl flex items-center justify-center text-[#0054A6] font-bold text-sm">C</div>
+                        <h4 class="font-bold text-sm text-slate-900 dark:text-white">Cek Tautan & Berkas</h4>
+                        <p class="text-xs text-slate-500 dark:text-slate-400 leading-relaxed">Sebelum mengklik tombol link, periksa URL tujuan dengan melayangkan kursor di atas tautan.</p>
+                    </div>
+
+                    <div class="bg-white dark:bg-slate-800 p-5 rounded-2xl border border-slate-200 dark:border-slate-700 shadow-sm space-y-2">
+                        <div class="w-10 h-10 bg-amber-500/10 rounded-xl flex items-center justify-center text-amber-500 font-bold text-sm">A</div>
+                        <h4 class="font-bold text-sm text-slate-900 dark:text-white">Amati Unsur Desakan</h4>
+                        <p class="text-xs text-slate-500 dark:text-slate-400 leading-relaxed">Perhatikan penggunaan kata-kata teror/tekanan tinggi seputar hal darurat, denda, atau ancaman pemblokiran yang dibuat sengaja agar Anda panik.</p>
+                    </div>
+
+                    <div class="bg-white dark:bg-slate-800 p-5 rounded-2xl border border-slate-200 dark:border-slate-700 shadow-sm space-y-2">
+                        <div class="w-10 h-10 bg-red-500/10 rounded-xl flex items-center justify-center text-red-500 font-bold text-sm">N</div>
+                        <h4 class="font-bold text-sm text-slate-900 dark:text-white">Nilai & Laporkan</h4>
+                        <p class="text-xs text-slate-500 dark:text-slate-400 leading-relaxed">Jika yakin ini adalah penipuan, hapus pesannya, blokir nomor pengirim, dan laporkan aduan ke saluran resmi instansi terkait.</p>
+                    </div>
+                </div>
+
+                <div class="bg-blue-50 dark:bg-slate-900 border border-blue-200 dark:border-slate-700 rounded-xl p-4 flex items-center justify-between gap-4">
+                    <span class="text-2xl">📞</span>
+                    <span class="text-xs md:text-sm text-slate-550 dark:text-slate-400">Jika Anda ragu dengan hasil pemeriksaan mandiri, jangan mengambil tindakan lebih lanjut. Segera hubungi Tim IT untuk mendapatkan bantuan dan verifikasi.</span>
+                    <button onclick="unlockSlide(3)" class="bg-[#0054A6] hover:bg-[#00498F] text-white font-semibold text-sm px-5 py-2 rounded-xl transition-all shadow-sm whitespace-nowrap">
+                        Saya Mengerti
+                    </button>
+                </div>
+            </div>
+
+            <!-- SLIDE 5: PROTOKOL PENANGANAN DARURAT -->
+            <div id="slide-darurat" class="slide-content hidden space-y-8">
+                <div class="space-y-3">
+                    <span class="inline-flex items-center px-3 py-1 rounded-full text-xs font-bold bg-red-500/10 text-red-600 dark:text-red-400 border border-red-200 dark:border-red-500/20 uppercase tracking-wider">
+                        5. Langkah Mitigasi
+                    </span>
+                    <h2 class="text-2xl md:text-3xl font-bold text-slate-900 dark:text-white">Terlanjur Mengisi Sandi Palsu?</h2>
+                    <p class="text-xs md:text-sm text-slate-500 dark:text-slate-400">Jalankan 3 langkah mitigasi di bawah untuk menguasai aksi penyelamatan darurat akun Anda.</p>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-12 gap-6 items-start">
+                    <!-- Left Checklist Drill -->
+                    <div class="md:col-span-7 space-y-3">
+                        <button onclick="runDrillStep(1)" id="drill-btn-1" class="w-full text-left p-4 rounded-2xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 hover:bg-slate-100 dark:hover:bg-slate-700 transition flex items-start gap-4 shadow-sm">
+                            <span class="bg-[#0054A6]/20 text-[#0054A6] dark:text-[#3A6EA5] w-6 h-6 rounded-full flex items-center justify-center font-bold text-xs flex-shrink-0 mt-0.5">1</span>
+                            <div>
+                                <h4 class="font-bold text-xs md:text-sm text-slate-800 dark:text-slate-200">Ganti Sandi (Password) Segera</h4>
+                                <p class="text-xs text-slate-500 dark:text-slate-400 mt-1 leading-relaxed">Buka web resmi dari peranti aman dan ganti kredensial masuk akun kerja utama Anda secara langsung.</p>
+                            </div>
+                        </button>
+
+                        <button onclick="runDrillStep(2)" id="drill-btn-2" class="w-full text-left p-4 rounded-2xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 hover:bg-slate-100 dark:hover:bg-slate-700 transition flex items-start gap-4 shadow-sm">
+                            <span class="bg-[#0054A6]/20 text-[#0054A6] dark:text-[#3A6EA5] w-6 h-6 rounded-full flex items-center justify-center font-bold text-xs flex-shrink-0 mt-0.5">2</span>
+                            <div>
+                                <h4 class="font-bold text-xs md:text-sm text-slate-800 dark:text-slate-200">Cabut Sesi Aktif (Revoke Sessions)</h4>
+                                <p class="text-xs text-slate-500 dark:text-slate-400 mt-1 leading-relaxed">Putuskan seluruh sesi login akun yang sedang aktif untuk melempar keluar peretas.</p>
+                            </div>
+                        </button>
+
+                        <button onclick="runDrillStep(3)" id="drill-btn-3" class="w-full text-left p-4 rounded-2xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 hover:bg-slate-100 dark:hover:bg-slate-700 transition flex items-start gap-4 shadow-sm">
+                            <span class="bg-[#0054A6]/20 text-[#0054A6] dark:text-[#3A6EA5] w-6 h-6 rounded-full flex items-center justify-center font-bold text-xs flex-shrink-0 mt-0.5">3</span>
+                            <div>
+                                <h4 class="font-bold text-xs md:text-sm text-slate-800 dark:text-slate-200">Laporkan Insiden ke Administrator IT</h4>
+                                <p class="text-xs text-slate-500 dark:text-slate-400 mt-1 leading-relaxed">Hubungi tim sekuriti kantor secepatnya agar lalu lintas data dari akun Anda dapat dipantau ekstra.</p>
+                            </div>
+                        </button>
+                    </div>
+
+                    <!-- Right Feedback Phone UI -->
+                    <div class="md:col-span-5 bg-white dark:bg-slate-950 p-5 rounded-2xl border border-slate-200 dark:border-slate-800 text-center space-y-4 shadow-sm">
+                        <span class="text-[10px] uppercase tracking-wider text-slate-400 font-mono">Status Sistem Keamanan</span>
+                        
+                        <div id="phone-screen" class="bg-slate-50 dark:bg-slate-900 rounded-xl p-4 text-left border border-slate-200 dark:border-slate-800 min-h-[140px] flex flex-col justify-between shadow-inner">
+                            <div class="flex justify-between text-[9px] text-slate-400 font-mono">
+                                <span>10:45 AM</span>
+                                <span id="phone-status">⚠️ Kredensial Bocor</span>
+                            </div>
+                            <div class="my-3 space-y-1">
+                                <p id="phone-heading" class="text-sm font-bold text-red-500 leading-tight">Akses Peretas Aktif!</p>
+                                <p id="phone-desc" class="text-[10px] text-slate-500 dark:text-slate-400 leading-relaxed">Sandi lama Anda terdeteksi dikuasai oleh server eksternal peretas siber...</p>
+                            </div>
+                            <div class="text-[9px] bg-slate-200 dark:bg-slate-800 p-1.5 rounded-lg text-center text-slate-600 dark:text-slate-400 font-mono" id="phone-foot">
+                                Tingkat Bahaya: Kritis
+                            </div>
+                        </div>
+
+                        <p id="drill-explanation" class="text-xs text-amber-500 font-semibold leading-relaxed">
+                            Mulai langkah 1 di samping untuk memutus ancaman login peretas!
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- SLIDE 6: PENUTUP (COMPLETION PAGE) -->
+            <div id="slide-selesai" class="slide-content hidden max-w-2xl mx-auto space-y-8 py-4">
+                <div class="text-center space-y-4">
+                    <div class="w-20 h-20 bg-gradient-to-tr from-[#0054A6] to-[#3A6EA5] rounded-full flex items-center justify-center mx-auto shadow-lg text-4xl animate-bounce">
+                        🏆
+                    </div>
+                    <div class="space-y-2">
+                        <h1 class="text-3xl md:text-4xl font-extrabold tracking-tight text-slate-900 dark:text-white">Selamat!</h1>
+                        <h3 class="text-base md:text-lg font-bold bg-gradient-to-r from-[#0054A6] to-[#3A6EA5] bg-clip-text text-transparent uppercase tracking-wide">
+                            Anda Telah Menyelesaikan Modul Security Awareness
+                        </h3>
+                        <p class="text-xs md:text-sm text-slate-500 dark:text-slate-400 max-w-md mx-auto">
+                            Terima kasih telah meluangkan waktu untuk mempelajari seluruh materi dalam modul Security Awareness yang diselenggarakan oleh Departemen MIS.
+                        </p>
+                    </div>
+                </div>
+
+                <hr class="border-slate-200 dark:border-slate-800">
+
+                <!-- Highlights Takeaway Card -->
+                <div class="bg-white dark:bg-slate-800 p-6 md:p-8 rounded-2xl border border-slate-200 dark:border-slate-700 space-y-5 shadow-sm text-left">
+                    <h4 class="font-extrabold text-sm text-slate-900 dark:text-white flex items-center gap-2">
+                        <span class="text-lg">📌</span> Yang Perlu Selalu Diingat:
+                    </h4>
+                    
+                    <ul class="space-y-4 text-xs md:text-sm text-slate-600 dark:text-slate-300">
+                        <li class="flex items-start gap-3">
+                            <span class="text-emerald-500 font-bold text-lg leading-none">✓</span>
+                            <span><strong>Selalu verifikasi identitas pengirim</strong> secara cermat sebelum mengeklik tautan atau mengunduh lampiran.</span>
+                        </li>
+                        <li class="flex items-start gap-3">
+                            <span class="text-emerald-500 font-bold text-lg leading-none">✓</span>
+                            <span><strong>Jangan pernah membagikan password maupun kode OTP</strong> kepada siapapun, termasuk pihak yang mengaku sebagai instansi atau bank resmi.</span>
+                        </li>
+                        <li class="flex items-start gap-3">
+                            <span class="text-emerald-500 font-bold text-lg leading-none">✓</span>
+                            <span><strong>Laporkan segera kepada Tim IT</strong> apabila Anda menemukan email atau pesan kerja yang mencurigakan demi keamanan bersama.</span>
+                        </li>
+                    </ul>
+                </div>
+
+                <hr class="border-slate-200 dark:border-slate-800">
+
+                <!-- Slogan Alert Box -->
+                <div class="p-4 bg-gradient-to-r from-[#0054A6]/10 to-[#3A6EA5]/10 border border-[#0054A6]/20 rounded-xl text-center">
+                    <p class="text-xs md:text-sm text-slate-700 dark:text-slate-200 font-semibold flex items-center justify-center gap-2">
+                        <span>💡</span> Keamanan informasi dimulai dari kewaspadaan setiap pengguna.
+                    </p>
+                </div>
+
+                <hr class="border-slate-200 dark:border-slate-800">
+
+                <!-- Centered Custom Slide Actions -->
+                <div class="flex flex-col sm:flex-row items-center justify-center gap-4">
+                    <button onclick="goToSlide(0)" class="w-full sm:w-auto px-6 py-3 text-xs md:text-sm font-bold border border-slate-300 dark:border-slate-700 rounded-xl text-slate-600 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-800 transition shadow-sm">
+                        🔄 Ulangi Modul
+                    </button>
+                </div>
+            </div>
+
+        </div>
+
+        <!-- SLIDE NAVIGATION CONTROLS -->
+        <div id="nav-controls-container" class="border-t border-slate-200 dark:border-slate-800 pt-6 mt-8 hidden flex-col sm:flex-row items-center justify-between gap-4 bg-[#f8fafc] dark:bg-[#0f172a] transition-all">
+            <!-- Helper text when next is locked -->
+            <div class="text-xs md:text-sm text-red-500 dark:text-red-400 font-medium text-center sm:text-left order-last sm:order-first" id="lock-hint">
+                🔒 Selesaikan tugas singkat di slide ini sebelum melanjutkan.
+            </div>
+
+            <div class="flex items-center gap-3 w-full sm:w-auto justify-end">
+                <button onclick="prevSlide()" id="btn-back" class="w-1/2 sm:w-auto px-5 py-2.5 text-xs md:text-sm font-bold border border-slate-300 dark:border-slate-700 rounded-xl text-slate-600 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-800 transition disabled:opacity-50 disabled:pointer-events-none">
+                    ← Kembali
+                </button>
+                <button onclick="nextSlide()" id="btn-next" class="w-1/2 sm:w-auto px-6 py-2.5 text-xs md:text-sm font-bold bg-gradient-to-r from-[#0054A6] to-[#3A6EA5] hover:from-[#00498F] hover:to-[#2F5F96] text-white rounded-xl shadow-md transition disabled:opacity-30 disabled:pointer-events-none">
+                    Lanjut →
+                </button>
+            </div>
+        </div>
+
+    </main>
+
+
+    <!-- FOOTER -->
+    <footer class="bg-white dark:bg-slate-800 border-t border-slate-200 dark:border-slate-700 py-5 text-center text-[10px] md:text-xs text-slate-500 dark:text-slate-400 transition-colors">
+        <div class="max-w-4xl mx-auto px-6">
+            <p>© 2026 PhishAware — Modul Edukasi Security Awareness.</p>
+        </div>
+    </footer>
+
+    <!-- INTERACTIVE SLIDERS JAVASCRIPT LOGIC -->
+    <script>
+        // Array of Slide IDs (Total 6 Slides)
+        const slides = ['home', 'jenis', 'simulator', 'scan', 'darurat', 'selesai'];
+        let currentSlideIndex = 0;
+        
+        // Track slide locks.
+        // Index 0: Slide 1 (Home)
+        // Index 1: Slide 2 (Jenis)
+        // Index 2: Slide 3 (Simulator)
+        // Index 3: Slide 4 (SCAN)
+        // Index 4: Slide 5 (Protokol Darurat)
+        // Index 5: Slide 6 (Penutup - Always Unlocked)
+        const slideLocks = [true, true, true, true, true, false]; // starts locked
+        
+        // For unlocking Slide 1 (Jenis)
+        const taktikReadSet = new Set();
+        
+        // Update view & progress
+        function updateSlidesView() {
+            // Toggle visibility
+            slides.forEach((slideId, index) => {
+                const el = document.getElementById('slide-' + slideId);
+                if (index === currentSlideIndex) {
+                    el.classList.remove('hidden');
+                } else {
+                    el.classList.add('hidden');
+                }
+            });
+
+            // Update Header Text & progress line
+            document.getElementById('slide-number').innerText = `Slide ${currentSlideIndex + 1} dari 6`;
+            const progressLine = document.getElementById('progress-line');
+            progressLine.style.width = `${((currentSlideIndex + 1) / 6) * 100}%`;
+
+            // Back button state
+            const btnBack = document.getElementById('btn-back');
+            btnBack.disabled = (currentSlideIndex === 0);
+
+            // Tampilkan/Sembunyikan navigasi bawah secara cerdas berdasarkan Slide Index
+            // Kita sembunyikan navigasi bawah pada Slide 1 (Home) dan Slide 6 (Selesai)
+            const navControls = document.getElementById('nav-controls-container');
+            if (currentSlideIndex === 0 || currentSlideIndex === 5) {
+                navControls.classList.add('hidden');
+            } else {
+                navControls.classList.remove('hidden');
+                navControls.classList.add('flex');
+            }
+
+            // Lock / Unlock Next button state
+            checkCurrentLockStatus();
+        }
+
+        // Logic to dynamically lock/unlock navigation controls
+        function checkCurrentLockStatus() {
+            const btnNext = document.getElementById('btn-next');
+            const lockHint = document.getElementById('lock-hint');
+            const isLocked = slideLocks[currentSlideIndex];
+
+            if (isLocked) {
+                btnNext.disabled = true;
+                lockHint.classList.remove('hidden');
+                btnNext.innerText = "Terkunci 🔒";
+            } else {
+                btnNext.disabled = false;
+                lockHint.classList.add('hidden');
+                if (currentSlideIndex === slides.length - 1) {
+                    btnNext.innerText = "Selesai ✨";
+                } else {
+                    btnNext.innerText = "Lanjut →";
+                }
+            }
+        }
+
+        // Function to explicitly unlock current slide
+        function unlockSlide(index) {
+            slideLocks[index] = false;
+            checkCurrentLockStatus();
+        }
+
+        // Jump to any slide directly
+        function goToSlide(index) {
+            currentSlideIndex = index;
+            updateSlidesView();
+        }
+
+        // Special Start Action on Slide 1
+        function startLearning() {
+            unlockSlide(0); // Unlock Slide 1
+            currentSlideIndex = 1; // Langsung alihkan ke Slide 2
+            updateSlidesView();
+        }
+
+        // Slide Navigation Triggers
+        function nextSlide() {
+            if (slideLocks[currentSlideIndex]) return; // locked
+            
+            if (currentSlideIndex < slides.length - 1) {
+                currentSlideIndex++;
+                updateSlidesView();
+            }
+        }
+
+        // SLIDE 2: Baca Taktik
+        function readTaktik(id) {
+            const desc = document.getElementById('sc-desc-' + id);
+            const check = document.getElementById('sc-check-' + id);
+            const card = document.getElementById('sc-card-' + id);
+
+            if (desc.classList.contains('hidden')) {
+                desc.classList.remove('hidden');
+                check.innerText = "🟢 Terbuka";
+                check.className = "text-[#0054A6] dark:text-[#3A6EA5] font-bold text-xs";
+                card.classList.add('border-[#0054A6]', 'dark:border-[#0054A6]');
+                
+                taktikReadSet.add(id);
+            }
+
+            // If all 3 read, unlock slide 2
+            if (taktikReadSet.size === 3) {
+                unlockSlide(1);
+                const helper = document.getElementById('slide-jenis-helper');
+                helper.innerText = "🎉 Bagus! Semua mekanisme pemanenan kredensial telah dipelajari. Silakan klik 'Lanjut'.";
+                helper.className = "text-center text-xs text-[#0054A6] dark:text-blue-400 bg-blue-500/10 p-3 rounded-xl border border-[#0054A6]/30 font-bold";
+            }
+        }
+
+        function prevSlide() {
+            if (currentSlideIndex > 0) {
+                currentSlideIndex--;
+                updateSlidesView();
+            }
+        }
+
+        // SLIDE 3: Lab Click Threat Flags
+        function clickRedFlag(flagType, text) {
+            const feedbackBox = document.getElementById('lab-feedback-box');
+            const feedbackText = document.getElementById('lab-feedback-text');
+
+            feedbackBox.className = "p-3 bg-red-100 dark:bg-red-950/40 rounded-xl border border-red-300 dark:border-red-500/30 text-slate-800 dark:text-slate-200 transition-all duration-300";
+            feedbackText.innerHTML = `<strong>ANALISIS (${flagType.toUpperCase()}):</strong> ${text}`;
+            
+            // Instantly unlock Slide 3 on first finding
+            unlockSlide(2);
+        }
+
+        // SLIDE 5: Drill Emergencies Simulator
+        let drillProgress = 0;
+        function runDrillStep(stepNum) {
+            const phStatus = document.getElementById('phone-status');
+            const phHeading = document.getElementById('phone-heading');
+            const phDesc = document.getElementById('phone-desc');
+            const phFoot = document.getElementById('phone-foot');
+            const explanation = document.getElementById('drill-explanation');
+
+            // Reset step highlights
+            for (let i = 1; i <= 3; i++) {
+                document.getElementById('drill-btn-' + i).classList.remove('border-[#0054A6]', 'bg-blue-500/10');
+            }
+
+            // Highlight current clicked step button
+            document.getElementById('drill-btn-' + stepNum).classList.add('border-[#0054A6]', 'bg-blue-500/10');
+
+            if (stepNum === 1) {
+                phStatus.innerText = "🔐 Sandi Diperbarui";
+                phStatus.className = "text-amber-500 font-bold text-xs";
+                phHeading.innerText = "Akses Lama Diputus 🔌";
+                phHeading.className = "text-xs font-bold text-amber-500 leading-tight";
+                phDesc.innerText = "Kredensial login Anda telah diubah. Peretas tidak dapat lagi login menggunakan sandi lama.";
+                phFoot.innerText = "Status: Terlindungi Sementara";
+                explanation.innerText = "Bagus! Kata sandi baru diterapkan. Sekarang, jalankan Langkah 2.";
+                drillProgress = 1;
+            } else if (stepNum === 2 && drillProgress >= 1) {
+                phHeading.innerText = "Sesi Aktif Dihapus 🚫";
+                phHeading.className = "text-xs font-bold text-emerald-500 leading-tight";
+                phDesc.innerText = "Semua sesi koneksi aktif peretas telah ditutup paksa secara global.";
+                phFoot.innerText = "Status: Peretas Terdepak";
+                explanation.innerText = "Hebat! Sesi penyusupan telah hangus. Selesaikan Langkah 3.";
+                drillProgress = 2;
+            } else if (stepNum === 3 && drillProgress >= 2) {
+                phHeading.innerText = "IT Admin Mengamankan 🛡️";
+                phHeading.className = "text-xs font-bold text-blue-500 leading-tight";
+                phDesc.innerText = "Tim Keamanan IT sedang memantau lalu lintas anomali pada akun Anda.";
+                phFoot.innerText = "Status: Akun Pulih & Aman";
+                explanation.innerText = "Sempurna! Seluruh tindakan penanganan darurat telah dikuasai dengan baik.";
+                drillProgress = 3;
+                
+                // Unlock slide 5 (last slide)
+                unlockSlide(4);
+            } else {
+                explanation.innerText = "⚠️ Harap ikuti langkah penanganan secara berurutan (Mulai dari 1)!";
+            }
+        }
+
+        // TRIGGER VISUAL TOAST ON COMPLETE
+        function triggerCompletionAlert() {
+            const toast = document.getElementById('toast-notif');
+            toast.classList.remove('hidden');
+            setTimeout(() => {
+                toast.classList.remove('translate-y-10', 'opacity-0');
+            }, 50);
+
+            // Hide after 4 seconds
+            setTimeout(() => {
+                toast.classList.add('translate-y-10', 'opacity-0');
+                setTimeout(() => {
+                    toast.classList.add('hidden');
+                }, 300);
+            }, 4000);
+        }
+
+        // ================= LIGHT/DARK THEME HANDLING =================
+        function initTheme() {
+            const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+            const savedTheme = localStorage.getItem('theme');
+
+            if (savedTheme === 'dark' || (!savedTheme && prefersDark)) {
+                document.documentElement.classList.add('dark');
+            } else {
+                document.documentElement.classList.remove('dark');
+            }
+            updateThemeIcons();
+        }
+
+        function toggleTheme() {
+            if (document.documentElement.classList.contains('dark')) {
+                document.documentElement.classList.remove('dark');
+                localStorage.setItem('theme', 'light');
+            } else {
+                document.documentElement.classList.add('dark');
+                localStorage.setItem('theme', 'dark');
+            }
+            updateThemeIcons();
+        }
+
+        function updateThemeIcons() {
+            const sunIcon = document.getElementById('theme-icon-sun');
+            const moonIcon = document.getElementById('theme-icon-moon');
+            const isDark = document.documentElement.classList.contains('dark');
+
+            if (isDark) {
+                if (sunIcon) sunIcon.classList.remove('hidden');
+                if (moonIcon) moonIcon.classList.add('hidden');
+            } else {
+                if (sunIcon) sunIcon.classList.add('hidden');
+                if (moonIcon) moonIcon.classList.remove('hidden');
+            }
+        }
+
+        // Run Initializers
+        initTheme();
+        updateSlidesView();
+    </script>
+</body>
+</html>
